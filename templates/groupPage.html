@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <link rel="shortcut icon" href="/static/1.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>第{{groupname}}組</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+        table {
+            width: 400px;
+        }
+        #message-box {
+            overflow-y: scroll;
+            word-wrap: break-word;
+            height: 70vh;
+            padding: 2em 3em;
+        }
+        #chat-room {
+            height: 80vh;
+        }
+        #link-box-all {
+            height: 87vh;
+            overflow-y: scroll;
+            word-wrap: break-word;
+        }
+        h5 {
+            text-align: center;
+        }
+        .tag {
+            padding: 6px 10px;
+            border-radius: 9px;
+            max-width: 15em;
+        }
+        .connect-info {
+            margin:0 auto ;
+            padding: 4px 10px;
+            border-radius: 9px;
+            width: 15em;
+        }
+        .container {
+            margin-left:5%;
+        }
+    </style>
+</head>
+
+<body class="blue-grey lighten-5">
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<nav>
+    <div class="nav-wrapper teal">
+        <ul>
+            <li><a class="brand-logo center">海山高中電腦輔助科學探究體驗營探究活動</a></li>
+            <li><a href="http://140.115.53.202:5000/group">返回分組頁面</a></li>
+        </ul>
+    </div>
+</nav>
+    <div id="all-box" class="row">
+        <div class="row">  
+        </div>
+        <div id="link-box-all" class="col s9">
+            <p>與組員一起討論要進行下面哪個活動吧。選好後請和組員一起進入問題表單。</p>
+            <p>點選登入。選到自己的組別後選擇自己的名字，密碼為名字旁邊的數字。登入後與組員討論回答問題。</p>
+            <p>合作模擬請與組員選定同一個模擬後一起進入操作。</p>
+            <br>
+            <div id="link-box1" class="s12">
+                <h5>向心力與摩擦係數探討合作</h5>
+                <br>
+                <h6>這個活動主題是車輛如何成功地轉彎，轉彎的物理原理是什麼呢?為什麼下雨天要減速不然容易打滑呢?和組員一起進入虛擬實驗室來探討這些問題背後的科學吧。</h6>
+                <br>
+                <div class="row">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>合作模擬</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a id="frictionLink" href="#" target="_blank"><img src="/static/frictionSimu.png" alt="第一個合作模擬" width="100"/></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <a href="https://cosci.tw/logInActivity/?gn=pRqzsW723673&actType=0" target="_blank"><button id="btn_toAct_1">前往向心力表單</button></a>
+                    <br>
+                </div>
+            </div>
+            <div id="link-box2" class="s12">
+                <h5>功能定理-弓箭手</h5>
+                <br>
+                <h6>這個活動主題是弓箭手在射箭時，手部的施力如何轉換到箭射出的速度。若想要射出的箭速度較快，該選彈性係數比較大還是比較小的弓呢?和組員一起進入虛擬實驗室來探討這些問題背後的科學吧。</h6>
+                <br>
+                <div class="row">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>合作模擬</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a id="archerLink" href="#" target="_blank"><img src="/static/archerSimu.png" alt="第一個合作模擬" width="100"/></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <a href="https://cosci.tw/logInActivity/?gn=Kk8NAO839694&actType=0" target="_blank"><button id="btn_toAct_1">前往弓箭手表單</button></a>
+                    <br>
+                </div>
+            </div>
+            <div id="link-box3" class="s12">
+                <h5>完全非彈性碰撞</h5>
+                <br>
+                <h6>這個活動主題是當兩物體在進行完全非彈性碰撞時，碰撞後的速度的方向及大小會如何改變呢?其中又涉及到哪些物理原理呢?和組員一起進入虛擬實驗室來探討這些問題背後的科學吧。</h6>
+                <br>
+                <div class="row">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>合作模擬</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a id="collisionLink" href="#" target="_blank"><img src="/static/collisionSimu.png" alt="第一個合作模擬" width="100"/></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <a href="https://cosci.tw/logInActivity/?gn=eXHp4N901704&actType=0" target="_blank"><button id="btn_toAct_1">前往碰撞表單</button></a>
+                    <br>
+                </div>
+            </div>
+            <div id="link-box3" class="s12">
+                <h5>牆面摩擦力</h5>
+                <br>
+                <h6>這個活動主題是當你手施力給牆面旁的物體時，其中什麼因素會影響到物體是否會滑下呢?若你與牆面相隔兩個物體，此時兩物體的摩擦力的方向和大小是多少呢?和組員一起進入虛擬實驗室來探討這些問題背後的科學吧。</h6>
+                <br>
+                <div class="row">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>合作模擬</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a id="wallfrictionLink" href="#" target="_blank"><img src="/static/wallfrictionSimu.png" alt="第一個合作模擬" width="100"/></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <a href="https://cosci.tw/logInActivity/?gn=GTD3F6935349&actType=0" target="_blank"><button id="btn_toAct_1">前往牆面摩擦力表單</button></a>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div id="chat-room" class="col s3">
+            <div id="groupChatroomTag" class="white"><p class="center">第{{groupname}}組聊天室</p></div>
+            <div id="message-box" class="col s12 white z-depth-1"></div>
+            <input id="send-msg-inp" type="text" class="validate">
+            <button id="send-msg-btn" class="btn waves-effect waves-light right" type="button"
+                    name="action">
+                send
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js"></script>
+    <script>
+        let room = '{{ room }}'
+        let username = '{{ username }}'
+        let groupnameStr = '{{ groupname }}'
+        let groupname = parseInt(groupnameStr)
+        let frictionRooms = ["J85T1K270013","AWg2hi322900","ZVhG8m347591","GrVaKb414501","NgBFd3428612","l3Cxg8439108","Ofmmxz487717","z1t708521036","ut0l4t532756","OPLLH6545428","r9mb2K558748","0TUMQl570700","bL2nW4587268","dGl0DE604317","Cm2Nt5621324","Cm2Nt5621316","Cm2Nt5621317","Cm2Nt5621318","Cm2Nt5621319","Cm2Nt5621320","Cm2Nt5621321","Cm2Nt5621322","Cm2Nt5621323","Cm2Nt5621324","Cm2Nt5621325","Cm2Nt5621326","Cm2Nt5621327","Cm2Nt5621328","Cm2Nt5621329","Cm2Nt5621330"]
+        let archerRooms = ["Ki2xNG748563","KP0Dk6128219","ra6iBr157371","guyWSw166732","iyd7rs180475","MzKiyi190163","7yANpy199332","cdlGxT208650","ocdz7h216875","38Q8nh228371","gd4TKZ237265","b2rWka247225","oUmgOh256577","EolG7x265211","4m98EE274016","4m98EE274017","4m98EE274018","4m98EE274019","4m98EE274020","4m98EE274021","4m98EE274022","4m98EE274023","4m98EE274024","4m98EE274025","4m98EE274026","4m98EE274027","4m98EE274028","4m98EE274029","4m98EE274030","4m98EE274031"]
+        let collisionRooms = ["4yTC8Z443976","SD1G1i453961","MZzeTm473841","hQOxVI483145","W1HxBA492903","KX7m9c501544","9IzA01510198","BmNTZd524826","ZULcMc534968","GUMM3F544710","nDiQl5552541","Tpv2SC561477","ERLzDX570286","T7wyLz578453","L0i5pM589173","L0i5pM589116","L0i5pM589117","L0i5pM589118","L0i5pM589119","L0i5pM589120","L0i5pM589121","L0i5pM589122","L0i5pM589123","L0i5pM589124","L0i5pM589125","L0i5pM589126","L0i5pM589127","L0i5pM589128","L0i5pM589129","L0i5pM589130"]
+        let wallfrictionRooms = ["QRBRSy098944","K9IvdP111287","aNl9z2120895","rZhPOF129615","8AHL4x138711","r8zhNc154695","gAWNt3169087","am2Tc3179063","OyazXi189006","9VKUdg197999","R1Gas6206278","E3u5aM214182","vniI3l222654","zDsWbG231262","FcqpBc239232","FcqpBc239216","FcqpBc239217","FcqpBc239218","FcqpBc239219","FcqpBc239220","FcqpBc239221","FcqpBc239222","FcqpBc239223","FcqpBc239224","FcqpBc239225","FcqpBc239226","FcqpBc239227","FcqpBc239228","FcqpBc239229","FcqpBc239230"]
+        let inp = document.querySelector('#send-msg-inp')
+        let sendMsgBtn = document.querySelector('#send-msg-btn')
+        let messageBox = document.querySelector('#message-box')
+        let frictionLinkTag = document.querySelector('#frictionLink')
+        frictionLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=iyFd0h1697099704032&room=", frictionRooms[groupname - 1],"&amount=1&maxuser=10&sync=false&lang=zh_TW"].join(''))
+        let archerLinkTag = document.querySelector('#archerLink')
+        archerLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=PhzlN71632455566649&room=", archerRooms[groupname - 1],"&amount=1&maxuser=10&sync=false&lang=zh_TW"].join(''))
+        let collisionLinkTag = document.querySelector('#collisionLink')
+        collisionLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=5g8CFI1515985952004&room=", collisionRooms[groupname - 1],"&amount=1&maxuser=10&sync=false&lang=zh_TW"].join(''))
+        let wallfrictionLinkTag = document.querySelector('#wallfrictionLink')
+        wallfrictionLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=JNEEGO1697100022903&room=", wallfrictionRooms[groupname - 1],"&amount=1&maxuser=10&sync=false&lang=zh_TW"].join(''))
+        // let leaveroom = document.querySelector('#leaveroom')
+        let socket = io();
+        // 連接
+        socket.connect(location.protocol + '//' + document.domain + ':' + location.port);
+        // 加入
+        socket.emit('join', {
+            username: username,
+            room: room
+        })
+        // 退出
+        /*leaveroom.onclick = function () {
+            socket.emit('leave', {
+                username: username,
+                room: room
+            })
+        }*/
+        // 發送
+        sendMsgBtn.onclick = function () {
+            let inp = document.querySelector('#send-msg-inp')
+            let msg = inp.value
+            let user = username
+            inp.value = ''
+            console.log("send:"+msg);
+            if(msg){
+                socket.emit('send msg', {
+                    user: user,
+                    message: msg,
+                    room: room,
+                })
+                messageBox.scrollTop = messageBox.scrollHeight
+            }else {
+                alert('訊息不能是空的')
+            }
+        }
+        // enter發送
+        inp.addEventListener("keyup", function(event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                sendMsgBtn.click();
+            }
+        });
+        // 連接的訊息
+        socket.on('connect info', function (data) {
+            let connectInfo = document.createElement('div')
+            connectInfo.className = 'row'
+            let msg = `
+              <div class="col s4 offset-s4">
+                <div class="connect-info grey lighten-4 center" >
+                  <span class="black-text">${data}
+                  </span>
+                </div>
+              </div>`
+            connectInfo.innerHTML = msg
+            messageBox.appendChild(connectInfo)
+        })
+        // 小組的訊息
+        socket.on('add new Member', function (data) {
+            let simuNum = data.simuNum;
+            let groupUser = data.username;
+            let group = data.group;
+            let position = data.position + 1;
+            let tabledata = document.getElementById(simuNum + "_group_" + group.toString() + "_" + position);
+            tabledata.innerHTML = groupUser;
+        })
+        // 移除組員的訊息
+        socket.on('delete group Member', function (data) {
+            let simuNum = data.simuNum;
+            let group = data.group;
+            let position = data.position + 1;
+            let tabledata = document.getElementById(simuNum + "_group_" + group.toString() + "_" + position);
+            tabledata.innerHTML = "";
+        })
+        // 接受訊息
+        socket.on('send msg', function (data) {
+            if(data.room === room){
+                console.log("receive:"+data)
+                console.log(data)
+                console.log(socket.id)
+                let msg = null
+                let msgbox = document.createElement('div')
+                msgbox.className = 'row'
+                if (data.user === username) {
+                    msg = `
+                  <div class="col right">
+                    <div class="tag teal z-depth-3" >
+                      <span class="white-text">${data.message}
+                      </span>
+                    </div>  
+                  </div>`
+                } else {
+                    msg = `
+                  <div class="col">
+                    <div class="tag z-depth-3">
+                      <span class="teal-text"><b>${data.user}</b>:  ${data.message}
+                      </span>
+                    </div>
+                  </div>`
+                }
+                msgbox.innerHTML = msg
+                messageBox.appendChild(msgbox)
+                messageBox.scrollTop = messageBox.scrollHeight
+            }
+        })
+
+        function joinClicked(clickID) {
+            let simuNum = parseInt(clickID.split("_")[1]);
+            let group = parseInt(clickID.split("_")[2]);
+            socket.emit('group info', {
+                username: username,
+                simuNum: simuNum,
+                group: group
+            })
+            console.log({
+                username: username,
+                simuNum: simuNum,
+                group: group
+            });
+        }
+    </script>
+</body>
+</html>

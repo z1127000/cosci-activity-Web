@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <link rel="shortcut icon" href="/static/1.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Group Page</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+        div.col.s12.white {
+            overflow-y: scroll;
+            word-wrap: break-word;
+            height: 85vh;
+            padding: 2em 3em;
+        }
+        #chat-room {
+            height: 95vh;
+        }
+        #link-box-all {
+            height: 95vh;
+            overflow-y: scroll;
+            word-wrap: break-word;
+        }
+        h5 {
+            text-align: center;
+        }
+        .tag {
+            padding: 6px 10px;
+            border-radius: 9px;
+            max-width: 15em;
+        }
+        .connect-info {
+            margin:0 auto ;
+            padding: 4px 10px;
+            border-radius: 9px;
+            width: 15em;
+        }
+        .container {
+            margin-left:5%;
+        }
+    </style>
+</head>
+
+<body class="blue-grey lighten-5">
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<!--<nav>
+    <div class="nav-wrapper teal">
+        <a href="" class="brand-logo center">聊天室({{ room }} 房间)</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a id="leaveroom" href="{{ url_for('logout') }}">退出房间</a></li>
+        </ul>
+    </div>
+</nav>-->
+    <div id="all-box" class="row">
+        <div id="link-box-all" class="col s9">
+            <div id="link-box1" class="s12">
+                <h4>向心力與摩擦係數探討合作</h4>
+                <br>
+                <div class="row">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>第一個合作模擬</th>
+                                <th>第二個合作模擬</th>
+                                <th>第三個合作模擬</th>
+                                <th>第四個合作模擬</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="https://cosci.tw/gather?name=ynGIbT1461565101396&room=aEpmTi966857&amount=1&maxuser=10" target="_blank"><img src="/static/frictionSimu.png" alt="第一個合作模擬" width="100"/></a>
+                                </td>
+                                <td>
+                                    <a href="https://cosci.tw/gather?name=ynGIbT1461565101396&room=aEpmTi966857&amount=1&maxuser=10" target="_blank"><img src="/static/frictionSimu.png" alt="第二個合作模擬" width="100"/></a>
+                                </td>
+                                <td>
+                                    <a href="https://cosci.tw/gather?name=ynGIbT1461565101396&room=aEpmTi966857&amount=1&maxuser=10" target="_blank"><img src="/static/frictionSimu.png" alt="第三個合作模擬" width="100"/></a>
+                                </td>
+                                <td>
+                                    <a href="https://cosci.tw/gather?name=ynGIbT1461565101396&room=aEpmTi966857&amount=1&maxuser=10" target="_blank"  ><img src="/static/frictionSimu.png" alt="第四個合作模擬" width="100"/></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                </div>
+                <div class="row">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td id="1_group_1_gn" width="7%">第一組</td>
+                                <td id="1_group_1_1" width="12%">{{simu1_group_info[1][0]}}</td>
+                                <td id="1_group_1_2" width="12%">{{simu1_group_info[1][1]}}</td>
+                                <td id="1_group_1_3" width="12%">{{simu1_group_info[1][2]}}</td>
+                                <td id="1_group_1_btn" width="7%"><button id="btn_1_1" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="1_group_9_gn" width="7%">第九組</td>
+                                <td id="1_group_9_1" width="12%">{{simu1_group_info[9][0]}}</td>
+                                <td id="1_group_9_2" width="12%">{{simu1_group_info[9][1]}}</td>
+                                <td id="1_group_9_3" width="12%">{{simu1_group_info[9][2]}}</td>
+                                <td id="1_group_9_btn" width="7%"><button id="btn_1_9" onclick="joinClicked(this.id)">加入</button></td>
+                            </tr>
+                            <tr>
+                                <td id="1_group_2_gn" width="7%">第二組</td>
+                                <td id="1_group_2_1" width="12%">{{simu1_group_info[2][0]}}</td>
+                                <td id="1_group_2_2" width="12%">{{simu1_group_info[2][1]}}</td>
+                                <td id="1_group_2_3" width="12%">{{simu1_group_info[2][2]}}</td>
+                                <td id="1_group_2_btn" width="7%"><button id="btn_1_2" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="1_group_10_gn" width="7%">第十組</td>
+                                <td id="1_group_10_1" width="12%">{{simu1_group_info[10][0]}}</td>
+                                <td id="1_group_10_2" width="12%">{{simu1_group_info[10][1]}}</td>
+                                <td id="1_group_10_3" width="12%">{{simu1_group_info[10][2]}}</td>
+                                <td id="1_group_10_btn" width="7%"><button id="btn_1_10" onclick="joinClicked(this.id)">加入</button></td>
+                            </tr>
+                            <tr>
+                                <td id="1_group_3_gn" width="7%">第三組</td>
+                                <td id="1_group_3_1" width="12%">{{simu1_group_info[3][0]}}</td>
+                                <td id="1_group_3_2" width="12%">{{simu1_group_info[3][1]}}</td>
+                                <td id="1_group_3_3" width="12%">{{simu1_group_info[3][2]}}</td>
+                                <td id="1_group_3_btn" width="7%"><button id="btn_1_3" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="1_group_11_gn" width="7%">第十一組</td>
+                                <td id="1_group_11_1" width="12%">{{simu1_group_info[11][0]}}</td>
+                                <td id="1_group_11_2" width="12%">{{simu1_group_info[11][1]}}</td>
+                                <td id="1_group_11_3" width="12%">{{simu1_group_info[11][2]}}</td>
+                                <td id="1_group_11_btn" width="7%"><button id="btn_1_11" onclick="joinClicked(this.id)">加入</button></td>
+                            </tr>
+                            <tr>
+                                <td id="1_group_4_gn" width="7%">第四組</td>
+                                <td id="1_group_4_1" width="12%">{{simu1_group_info[4][0]}}</td>
+                                <td id="1_group_4_2" width="12%">{{simu1_group_info[4][1]}}</td>
+                                <td id="1_group_4_3" width="12%">{{simu1_group_info[4][2]}}</td>
+                                <td id="1_group_4_btn" width="7%"><button id="btn_1_4" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="1_group_12_gn" width="7%">第十二組</td>
+                                <td id="1_group_12_1" width="12%">{{simu1_group_info[12][0]}}</td>
+                                <td id="1_group_12_2" width="12%">{{simu1_group_info[12][1]}}</td>
+                                <td id="1_group_12_3" width="12%">{{simu1_group_info[12][2]}}</td>
+                                <td id="1_group_12_btn" width="7%"><button id="btn_1_12" onclick="joinClicked(this.id)">加入</button></td>
+                            </tr>
+                            <tr>
+                                <td id="1_group_5_gn" width="7%">第五組</td>
+                                <td id="1_group_5_1" width="12%">{{simu1_group_info[5][0]}}</td>
+                                <td id="1_group_5_2" width="12%">{{simu1_group_info[5][1]}}</td>
+                                <td id="1_group_5_3" width="12%">{{simu1_group_info[5][2]}}</td>
+                                <td id="1_group_5_btn" width="7%"><button id="btn_1_5" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="1_group_13_gn" width="7%">第十三組</td>
+                                <td id="1_group_13_1" width="12%">{{simu1_group_info[13][0]}}</td>
+                                <td id="1_group_13_2" width="12%">{{simu1_group_info[13][1]}}</td>
+                                <td id="1_group_13_3" width="12%">{{simu1_group_info[13][2]}}</td>
+                                <td id="1_group_13_btn" width="7%"><button id="btn_1_13" onclick="joinClicked(this.id)">加入</button></td>
+                            </tr>
+                            <tr>
+                                <td id="1_group_6_gn" width="7%">第六組</td>
+                                <td id="1_group_6_1" width="12%">{{simu1_group_info[6][0]}}</td>
+                                <td id="1_group_6_2" width="12%">{{simu1_group_info[6][1]}}</td>
+                                <td id="1_group_6_3" width="12%">{{simu1_group_info[6][2]}}</td>
+                                <td id="1_group_6_btn" width="7%"><button id="btn_1_6" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="1_group_14_gn"width="7%">第十四組</td>
+                                <td id="1_group_14_1" width="12%">{{simu1_group_info[14][0]}}</td>
+                                <td id="1_group_14_2" width="12%">{{simu1_group_info[14][1]}}</td>
+                                <td id="1_group_14_3" width="12%">{{simu1_group_info[14][2]}}</td>
+                                <td id="1_group_14_btn" width="7%"><button id="btn_1_14" onclick="joinClicked(this.id)">加入</button></td>
+                            </tr>
+                            <tr>
+                                <td id="1_group_7_gn" width="7%">第七組</td>
+                                <td id="1_group_7_1" width="12%">{{simu1_group_info[7][0]}}</td>
+                                <td id="1_group_7_2" width="12%">{{simu1_group_info[7][1]}}</td>
+                                <td id="1_group_7_3" width="12%">{{simu1_group_info[7][2]}}</td>
+                                <td id="1_group_7_btn" width="7%"><button id="btn_1_7" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="1_group_15_gn" width="7%">第十五組</td>
+                                <td id="1_group_15_1" width="12%">{{simu1_group_info[15][0]}}</td>
+                                <td id="1_group_15_2" width="12%">{{simu1_group_info[15][1]}}</td>
+                                <td id="1_group_15_3" width="12%">{{simu1_group_info[15][2]}}</td>
+                                <td id="1_group_15_btn" width="7%"><button id="btn_1_15" onclick="joinClicked(this.id)">加入</button></td>
+                            </tr>
+                            <tr>
+                                <td id="1_group_8_gn" width="7%">第八組</td>
+                                <td id="1_group_8_1" width="12%">{{simu1_group_info[8][0]}}</td>
+                                <td id="1_group_8_2" width="12%">{{simu1_group_info[8][1]}}</td>
+                                <td id="1_group_8_3" width="12%">{{simu1_group_info[8][2]}}</td>
+                                <td id="1_group_8_btn" width="7%"><button id="btn_1_8" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="1_activity_btn" colspan="5"><a href="https://cosci.tw/logInActivity/?gn=H4V6hB945386&actType=0" target="_blank"><button id="btn_toAct_1">前往表單</button></a></td>
+                            </tr>
+                        </tbody>
+                    </table>    
+                </div>
+            </div>
+            <div id="link-box2" class="s12">
+                <h4>功能定理-弓箭手</h4>
+                <br>
+                <div class="row">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>第一個合作模擬</th>
+                                <th>第二個合作模擬</th>
+                                <th>第三個合作模擬</th>
+                                <th>第四個合作模擬</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="https://cosci.tw/gather?name=PhzlN71632455566649&room=8RTyHC684043&amount=1&maxuser=10" target="_blank"><img src="/static/archerSimu.png" alt="第一個合作模擬" width="100"/></a>
+                                </td>
+                                <td>
+                                    <a href="https://cosci.tw/gather?name=PhzlN71632455566649&room=8RTyHC684043&amount=1&maxuser=10" target="_blank"><img src="/static/archerSimu.png" alt="第二個合作模擬" width="100"/></a>
+                                </td>
+                                <td>
+                                    <a href="https://cosci.tw/gather?name=PhzlN71632455566649&room=8RTyHC684043&amount=1&maxuser=10" target="_blank"><img src="/static/archerSimu.png" alt="第三個合作模擬" width="100"/></a>
+                                </td>
+                                <td>
+                                    <a href="https://cosci.tw/gather?name=PhzlN71632455566649&room=8RTyHC684043&amount=1&maxuser=10" target="_blank"  ><img src="/static/archerSimu.png" alt="第四個合作模擬" width="100"/></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                </div>
+                <div class="row">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td id="2_group_1_gn" width="7%">第一組</td>
+                                <td id="2_group_1_1" width="12%">{{simu2_group_info[1][0]}}</td>
+                                <td id="2_group_1_2" width="12%">{{simu2_group_info[1][1]}}</td>
+                                <td id="2_group_1_3" width="12%">{{simu2_group_info[1][2]}}</td>
+                                <td id="2_group_1_btn" width="7%"><button id="btn_2_1" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="2_group_9_gn" width="7%">第九組</td>
+                                <td id="2_group_9_1" width="12%">{{simu2_group_info[9][0]}}</td>
+                                <td id="2_group_9_2" width="12%">{{simu2_group_info[9][1]}}</td>
+                                <td id="2_group_9_3" width="12%">{{simu2_group_info[9][2]}}</td>
+                                <td id="2_group_9_btn" width="7%"><button id="btn_2_9" onclick="joinClicked(this.id)">加入</button></td>
+                            </tr>
+                            <tr>
+                                <td id="2_group_2_gn" width="7%">第二組</td>
+                                <td id="2_group_2_1" width="12%">{{simu2_group_info[2][0]}}</td>
+                                <td id="2_group_2_2" width="12%">{{simu2_group_info[2][1]}}</td>
+                                <td id="2_group_2_3" width="12%">{{simu2_group_info[2][2]}}</td>
+                                <td id="2_group_2_btn" width="7%"><button id="btn_2_2" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="2_group_10_gn" width="7%">第十組</td>
+                                <td id="2_group_10_1" width="12%">{{simu2_group_info[10][0]}}</td>
+                                <td id="2_group_10_2" width="12%">{{simu2_group_info[10][1]}}</td>
+                                <td id="2_group_10_3" width="12%">{{simu2_group_info[10][2]}}</td>
+                                <td id="2_group_10_btn" width="7%"><button id="btn_2_10" onclick="joinClicked(this.id)">加入</button></td>
+                            </tr>
+                            <tr>
+                                <td id="2_group_3_gn" width="7%">第三組</td>
+                                <td id="2_group_3_1" width="12%">{{simu2_group_info[3][0]}}</td>
+                                <td id="2_group_3_2" width="12%">{{simu2_group_info[3][1]}}</td>
+                                <td id="2_group_3_3" width="12%">{{simu2_group_info[3][2]}}</td>
+                                <td id="2_group_3_btn" width="7%"><button id="btn_2_3" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="2_group_11_gn" width="7%">第十一組</td>
+                                <td id="2_group_11_1" width="12%">{{simu2_group_info[11][0]}}</td>
+                                <td id="2_group_11_2" width="12%">{{simu2_group_info[11][1]}}</td>
+                                <td id="2_group_11_3" width="12%">{{simu2_group_info[11][2]}}</td>
+                                <td id="2_group_11_btn" width="7%"><button id="btn_2_11" onclick="joinClicked(this.id)">加入</button></td>
+                            </tr>
+                            <tr>
+                                <td id="2_group_4_gn" width="7%">第四組</td>
+                                <td id="2_group_4_1" width="12%">{{simu2_group_info[4][0]}}</td>
+                                <td id="2_group_4_2" width="12%">{{simu2_group_info[4][1]}}</td>
+                                <td id="2_group_4_3" width="12%">{{simu2_group_info[4][2]}}</td>
+                                <td id="2_group_4_btn" width="7%"><button id="btn_2_4" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="2_group_12_gn" width="7%">第十二組</td>
+                                <td id="2_group_12_1" width="12%">{{simu2_group_info[12][0]}}</td>
+                                <td id="2_group_12_2" width="12%">{{simu2_group_info[12][1]}}</td>
+                                <td id="2_group_12_3" width="12%">{{simu2_group_info[12][2]}}</td>
+                                <td id="2_group_12_btn" width="7%"><button id="btn_2_12" onclick="joinClicked(this.id)">加入</button></td>
+                            </tr>
+                            <tr>
+                                <td id="2_group_5_gn" width="7%">第五組</td>
+                                <td id="2_group_5_1" width="12%">{{simu2_group_info[5][0]}}</td>
+                                <td id="2_group_5_2" width="12%">{{simu2_group_info[5][1]}}</td>
+                                <td id="2_group_5_3" width="12%">{{simu2_group_info[5][2]}}</td>
+                                <td id="2_group_5_btn" width="7%"><button id="btn_2_5" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="2_group_13_gn" width="7%">第十三組</td>
+                                <td id="2_group_13_1" width="12%">{{simu2_group_info[13][0]}}</td>
+                                <td id="2_group_13_2" width="12%">{{simu2_group_info[13][1]}}</td>
+                                <td id="2_group_13_3" width="12%">{{simu2_group_info[13][2]}}</td>
+                                <td id="2_group_13_btn" width="7%"><button id="btn_2_13" onclick="joinClicked(this.id)">加入</button></td>
+                            </tr>
+                            <tr>
+                                <td id="2_group_6_gn" width="7%">第六組</td>
+                                <td id="2_group_6_1" width="12%">{{simu2_group_info[6][0]}}</td>
+                                <td id="2_group_6_2" width="12%">{{simu2_group_info[6][1]}}</td>
+                                <td id="2_group_6_3" width="12%">{{simu2_group_info[6][2]}}</td>
+                                <td id="2_group_6_btn" width="7%"><button id="btn_2_6" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="2_group_14_gn"width="7%">第十四組</td>
+                                <td id="2_group_14_1" width="12%">{{simu2_group_info[14][0]}}</td>
+                                <td id="2_group_14_2" width="12%">{{simu2_group_info[14][1]}}</td>
+                                <td id="2_group_14_3" width="12%">{{simu2_group_info[14][2]}}</td>
+                                <td id="2_group_14_btn" width="7%"><button id="btn_2_14" onclick="joinClicked(this.id)">加入</button></td>
+                            </tr>
+                            <tr>
+                                <td id="2_group_7_gn" width="7%">第七組</td>
+                                <td id="2_group_7_1" width="12%">{{simu2_group_info[7][0]}}</td>
+                                <td id="2_group_7_2" width="12%">{{simu2_group_info[7][1]}}</td>
+                                <td id="2_group_7_3" width="12%">{{simu2_group_info[7][2]}}</td>
+                                <td id="2_group_7_btn" width="7%"><button id="btn_2_7" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="2_group_15_gn" width="7%">第十五組</td>
+                                <td id="2_group_15_1" width="12%">{{simu2_group_info[15][0]}}</td>
+                                <td id="2_group_15_2" width="12%">{{simu2_group_info[15][1]}}</td>
+                                <td id="2_group_15_3" width="12%">{{simu2_group_info[15][2]}}</td>
+                                <td id="2_group_15_btn" width="7%"><button id="btn_2_15" onclick="joinClicked(this.id)">加入</button></td>
+                            </tr>
+                            <tr>
+                                <td id="2_group_8_gn" width="7%">第八組</td>
+                                <td id="2_group_8_1" width="12%">{{simu2_group_info[8][0]}}</td>
+                                <td id="2_group_8_2" width="12%">{{simu2_group_info[8][1]}}</td>
+                                <td id="2_group_8_3" width="12%">{{simu2_group_info[8][2]}}</td>
+                                <td id="2_group_8_btn" width="7%"><button id="btn_1_8" onclick="joinClicked(this.id)">加入</button></td>
+                                <td id="2_activity_btn" colspan="5"><a href="https://cosci.tw/logInActivity/?gn=1FaCc5862070&actType=0" target="_blank"><button id="btn_toAct_1">前往表單</button></a></td>
+                            </tr>
+                        </tbody>
+                    </table>    
+                </div>
+            </div>
+        </div>
+        <div id="chat-room" class="col s3">
+            <div id="message-box" class="col s12 white z-depth-1"></div>
+            <input id="send-msg-inp" type="text" class="validate">
+            <button id="send-msg-btn" class="btn waves-effect waves-light right" type="button"
+                    name="action">
+                send
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js"></script>
+    <script>
+        let room = '{{ room }}'
+        let username = '{{ username }}'
+        let inp = document.querySelector('#send-msg-inp')
+        let sendMsgBtn = document.querySelector('#send-msg-btn')
+        let messageBox = document.querySelector('#message-box')
+        let leaveroom = document.querySelector('#leaveroom')
+        let socket = io();
+        // 連接
+        socket.connect(location.protocol + '//' + document.domain + ':' + location.port);
+        // 加入
+        socket.emit('join', {
+            username: username,
+            room: room
+        })
+        // 退出
+        /*leaveroom.onclick = function () {
+            socket.emit('leave', {
+                username: username,
+                room: room
+            })
+        }*/
+        // 發送
+        sendMsgBtn.onclick = function () {
+            let inp = document.querySelector('#send-msg-inp')
+            let msg = inp.value
+            let user = username
+            inp.value = ''
+            console.log("send:"+msg);
+            if(msg){
+                socket.emit('send msg', {
+                    user: user,
+                    message: msg,
+                    room: room,
+                })
+                messageBox.scrollTop = messageBox.scrollHeight
+            }else {
+                alert('訊息不能是空的')
+            }
+        }
+        // enter發送
+        inp.addEventListener("keyup", function(event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                sendMsgBtn.click();
+            }
+        });
+        // 連接的訊息
+        socket.on('connect info', function (data) {
+            let connectInfo = document.createElement('div')
+            connectInfo.className = 'row'
+            let msg = `
+              <div class="col s4 offset-s4">
+                <div class="connect-info grey lighten-4 center" >
+                  <span class="black-text">${data}
+                  </span>
+                </div>
+              </div>`
+            connectInfo.innerHTML = msg
+            messageBox.appendChild(connectInfo)
+        })
+        // 小組的訊息
+        socket.on('add new Member', function (data) {
+            let simuNum = data.simuNum;
+            let groupUser = data.username;
+            let group = data.group;
+            let position = data.position + 1;
+            let tabledata = document.getElementById(simuNum + "_group_" + group.toString() + "_" + position);
+            tabledata.innerHTML = groupUser;
+        })
+        // 移除組員的訊息
+        socket.on('delete group Member', function (data) {
+            let simuNum = data.simuNum;
+            let group = data.group;
+            let position = data.position + 1;
+            let tabledata = document.getElementById(simuNum + "_group_" + group.toString() + "_" + position);
+            tabledata.innerHTML = "";
+        })
+        // 接受訊息
+        socket.on('send msg', function (data) {
+            console.log("receive:"+data)
+            console.log(data)
+            console.log(socket.id)
+            let msg = null
+            let msgbox = document.createElement('div')
+            msgbox.className = 'row'
+            if (data.user === username) {
+                msg = `
+              <div class="col right">
+                <div class="tag teal z-depth-3" >
+                  <span class="white-text">${data.message}
+                  </span>
+                </div>
+              </div>`
+            } else {
+                msg = `
+              <div class="col">
+                <div class="tag z-depth-3">
+                  <span class="teal-text"><b>${data.user}</b>:  ${data.message}
+                  </span>
+                </div>
+              </div>`
+            }
+            msgbox.innerHTML = msg
+            messageBox.appendChild(msgbox)
+            messageBox.scrollTop = messageBox.scrollHeight
+        })
+
+        function joinClicked(clickID) {
+            let simuNum = parseInt(clickID.split("_")[1]);
+            let group = parseInt(clickID.split("_")[2]);
+            socket.emit('group info', {
+                username: username,
+                simuNum: simuNum,
+                group: group
+            })
+            console.log({
+                username: username,
+                simuNum: simuNum,
+                group: group
+            });
+        }
+    </script>
+</body>
+</html>

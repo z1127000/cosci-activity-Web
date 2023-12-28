@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <link rel="shortcut icon" href="/static/1.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>register</title>
+</head>
+
+<body>
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<nav>
+    <div class="nav-wrapper teal">
+        <a href="#" class="brand-logo center">海山高中電腦輔助科學探究體驗營探究活動</a>
+    </div>
+</nav>
+<div class="container">
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s4 offset-s4 ">
+            <form class="col s12" method="post" action="{{ url_for('index') }}" onsubmit="return nameValidate()">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input value="" id="username" type="text" class="validate" name="username">
+                        <label class="active" for="username">名字</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input value="initial_room" id="room" type="text" class="validate" name="room" disabled>
+                        <label class="active" for="room">room</label>
+                    </div>
+                </div>
+                <button id="submit" class="btn waves-effect waves-light teal z-depth-3 right" type="submit"
+                        name="action">進入活動
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    let inp = document.querySelector('#username');
+    let roominp = document.querySelector('#room');
+    let btn = document.querySelector('#submit');
+    let now_user_str = "{{now_users_str}}"
+    let now_user = now_user_str.split("---")
+
+    function nameValidate() {
+        if(now_user.includes(inp.value)){
+            alert("使用者名稱重複，請打上全名或在後方加上英文名字。若加上英文名字請舉手讓助教登記。");
+            return false;
+        }
+    }
+
+    setInterval(function () {
+        if (inp.value && roominp.value) {
+            btn.classList.remove('disabled');
+        } else {
+            if (!btn.classList.contains('disabled')) {
+                btn.classList.add('disabled');
+            }
+        }
+    }, 300);/*
+    let inp = document.querySelector('#username');
+    let btn = document.querySelector('#submit');
+    setInterval(function () {
+        if (inp.value) {
+            btn.classList.remove('disabled');
+        } else {
+            if (!btn.classList.contains('disabled')) {
+                btn.classList.add('disabled');
+            }
+        }
+    }, 300);*/
+</script>
+</body>
+</html>
