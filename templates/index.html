@@ -18,7 +18,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 <nav>
     <div class="nav-wrapper teal">
-        <a href="#" class="brand-logo center">海山高中電腦輔助科學探究體驗營探究活動</a>
+        <a href="#" class="brand-logo center">海山高中電腦輔助科學探究體驗營</a>
     </div>
 </nav>
 <div class="container">
@@ -47,12 +47,18 @@
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js"></script>
 <script>
     let inp = document.querySelector('#username');
     let roominp = document.querySelector('#room');
     let btn = document.querySelector('#submit');
     let now_user_str = "{{now_users_str}}"
-    let now_user = now_user_str.split("---")
+    let now_user = now_user_str.split("---");
+
+    let socket = io();
+    // 連接
+    socket.connect(location.protocol + '//' + document.domain + ':' + location.port);
+    // 加入
 
     function nameValidate() {
         if(now_user.includes(inp.value)){
@@ -60,6 +66,13 @@
             return false;
         }
     }
+
+    socket.on('user enter act', function (data) {
+        let username = data.user;
+        console.log(data);
+        now_user.push(username);
+        console.log(now_user);
+    })
 
     setInterval(function () {
         if (inp.value && roominp.value) {

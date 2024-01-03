@@ -62,6 +62,7 @@ def index():
         now_users.append(username)
         session['username'] = username
         session['room'] = room
+        socketio.emit('user enter act', {"user":username})
         return redirect(url_for('home'))
 
 @app.route('/home/')
@@ -127,6 +128,7 @@ def handle_message(data):
     room_split = data.get('room').split('_')
     msg_log["user"] = data.get('user')
     msg_log["msg"] = data['message']
+    msg_log["isoTime"] = datetime.datetime.now(tz=tzone).isoformat()
     msg_log["time"] = datetime.datetime.now(tz=tzone)
     if data.get('room') == 'None':
         msg_log["room"] = "全體聊天室"
@@ -154,8 +156,8 @@ def handle_lock_group(data):
             else:
                 all_members.pop(name)
 
-        grouping_log["member_Info"] = all_members
         grouping_log["group_Info"] = all_simu_group_info
+        grouping_log["isoTime"] = datetime.datetime.now(tz=tzone).isoformat()
         grouping_log["time"] = datetime.datetime.now(tz=tzone)
         grouping_msg_collection.insert_one(grouping_log)
 
@@ -182,11 +184,6 @@ def handle_group_info(data):
                 all_members[username] = group
                 data["position"] = position
 
-                grouping_log["member_Info"] = all_members
-                grouping_log["group_Info"] = all_simu_group_info
-                grouping_log["time"] = datetime.datetime.now(tz=tzone)
-                grouping_msg_collection.insert_one(grouping_log)
-
                 socketio.emit('add new Member', data, to=room)
         elif all_members[username] != group:
             prev_group = all_members[username]
@@ -199,11 +196,6 @@ def handle_group_info(data):
                 all_simu_group_info[prev_group][prev_position] = ""
                 all_members[username] = group
                 data["position"] = position
-
-                grouping_log["member_Info"] = all_members
-                grouping_log["group_Info"] = all_simu_group_info
-                grouping_log["time"] = datetime.datetime.now(tz=tzone)
-                grouping_msg_collection.insert_one(grouping_log)
 
                 socketio.emit('delete group Member', {"simuNum":simuNum, "group":prev_group, "position":prev_position}, to=room)
                 socketio.emit('add new Member', data, to=room)
@@ -232,6 +224,6 @@ def on_leave(data):
 
 
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port=5000, debug=True)
+    socketio.run(app, host='0.0.0.0', port=5000)
 
 #ip:140.115.53.202
