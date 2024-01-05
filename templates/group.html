@@ -57,7 +57,7 @@
     <div class="nav-wrapper teal">
         <ul>
             <li><a class="brand-logo center">海山高中電腦輔助科學探究體驗營</a></li>
-            <li><a href="http://140.115.53.202:5000/home">返回首頁</a></li>
+            <li><a id="toHomeBtn" href="#">返回首頁</a></li>
         </ul>
     </div>
 </nav>
@@ -77,7 +77,7 @@
                                 <td id="0_group_1_3" width="12%">{{all_simu_group_info[1][2]}}</td>
                                 <td id="0_group_1_btn" width="7%"><button id="btn_0_1" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_1_Lockbtn" width="7%"><button id="lock_btn_0_1" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/1"><button id="btn_toGroup_1" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_1" colspan="5"><a id="toGroupPageLink_1" href="#"><button id="btn_toGroup_1" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_2_gn" width="7%">第二組</td>
@@ -86,7 +86,7 @@
                                 <td id="0_group_2_3" width="12%">{{all_simu_group_info[2][2]}}</td>
                                 <td id="0_group_2_btn" width="7%"><button id="btn_0_2" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_2_Lockbtn" width="7%"><button id="lock_btn_0_2" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/2"><button id="btn_toGroup_2" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_2" colspan="5"><a id="toGroupPageLink_2" href="#"><button id="btn_toGroup_2" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_3_gn" width="7%">第三組</td>
@@ -95,7 +95,7 @@
                                 <td id="0_group_3_3" width="12%">{{all_simu_group_info[3][2]}}</td>
                                 <td id="0_group_3_btn" width="7%"><button id="btn_0_3" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_3_Lockbtn" width="7%"><button id="lock_btn_0_3" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/3"><button id="btn_toGroup_3" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_3" colspan="5"><a id="toGroupPageLink_3" href="#"><button id="btn_toGroup_3" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_4_gn" width="7%">第四組</td>
@@ -104,7 +104,7 @@
                                 <td id="0_group_4_3" width="12%">{{all_simu_group_info[4][2]}}</td>
                                 <td id="0_group_4_btn" width="7%"><button id="btn_0_4" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_4_Lockbtn" width="7%"><button id="lock_btn_0_4" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/4"><button id="btn_toGroup_4" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_4" colspan="5"><a id="toGroupPageLink_4" href="#"><button id="btn_toGroup_4" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_5_gn" width="7%">第五組</td>
@@ -113,7 +113,7 @@
                                 <td id="0_group_5_3" width="12%">{{all_simu_group_info[5][2]}}</td>
                                 <td id="0_group_5_btn" width="7%"><button id="btn_0_5" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_5_Lockbtn" width="7%"><button id="lock_btn_0_5" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/5"><button id="btn_toGroup_5" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_5" colspan="5"><a id="toGroupPageLink_5" href="#"><button id="btn_toGroup_5" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_6_gn" width="7%">第六組</td>
@@ -122,7 +122,7 @@
                                 <td id="0_group_6_3" width="12%">{{all_simu_group_info[6][2]}}</td>
                                 <td id="0_group_6_btn" width="7%"><button id="btn_0_6" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_6_Lockbtn" width="7%"><button id="lock_btn_0_6" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/6"><button id="btn_toGroup_6" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_6" colspan="5"><a id="toGroupPageLink_6" href="#"><button id="btn_toGroup_6" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_7_gn" width="7%">第七組</td>
@@ -131,7 +131,7 @@
                                 <td id="0_group_7_3" width="12%">{{all_simu_group_info[7][2]}}</td>
                                 <td id="0_group_7_btn" width="7%"><button id="btn_0_7" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_7_Lockbtn" width="7%"><button id="lock_btn_0_7" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/7"><button id="btn_toGroup_7" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_7" colspan="5"><a id="toGroupPageLink_7" href="#"><button id="btn_toGroup_7" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_8_gn" width="7%">第八組</td>
@@ -140,7 +140,7 @@
                                 <td id="0_group_8_3" width="12%">{{all_simu_group_info[8][2]}}</td>
                                 <td id="0_group_8_btn" width="7%"><button id="btn_0_8" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_8_Lockbtn" width="7%"><button id="lock_btn_0_8" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/8"><button id="btn_toGroup_8" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_8" colspan="5"><a id="toGroupPageLink_8" href="#"><button id="btn_toGroup_8" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>    
                                 <td id="0_group_9_gn" width="7%">第九組</td>
@@ -149,7 +149,7 @@
                                 <td id="0_group_9_3" width="12%">{{all_simu_group_info[9][2]}}</td>
                                 <td id="0_group_9_btn" width="7%"><button id="btn_0_9" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_9_Lockbtn" width="7%"><button id="lock_btn_0_9" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/9"><button id="btn_toGroup_9" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_9" colspan="5"><a id="toGroupPageLink_9" href="#"><button id="btn_toGroup_9" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>    
                                 <td id="0_group_10_gn" width="7%">第十組</td>
@@ -158,7 +158,7 @@
                                 <td id="0_group_10_3" width="12%">{{all_simu_group_info[10][2]}}</td>
                                 <td id="0_group_10_btn" width="7%"><button id="btn_0_10" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_10_Lockbtn" width="7%"><button id="lock_btn_0_10" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/10"><button id="btn_toGroup_10" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_10" colspan="5"><a id="toGroupPageLink_10" href="#"><button id="btn_toGroup_10" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>    
                                 <td id="0_group_11_gn" width="7%">第十一組</td>
@@ -167,7 +167,7 @@
                                 <td id="0_group_11_3" width="12%">{{all_simu_group_info[11][2]}}</td>
                                 <td id="0_group_11_btn" width="7%"><button id="btn_0_11" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_11_Lockbtn" width="7%"><button id="lock_btn_0_11" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/11"><button id="btn_toGroup_11" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_11" colspan="5"><a id="toGroupPageLink_11" href="#"><button id="btn_toGroup_11" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>    
                                 <td id="0_group_12_gn" width="7%">第十二組</td>
@@ -176,7 +176,7 @@
                                 <td id="0_group_12_3" width="12%">{{all_simu_group_info[12][2]}}</td>
                                 <td id="0_group_12_btn" width="7%"><button id="btn_0_12" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_12_Lockbtn" width="7%"><button id="lock_btn_0_12" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/12"><button id="btn_toGroup_12" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_12" colspan="5"><a id="toGroupPageLink_12" href="#"><button id="btn_toGroup_12" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_13_gn" width="7%">第十三組</td>
@@ -185,7 +185,7 @@
                                 <td id="0_group_13_3" width="12%">{{all_simu_group_info[13][2]}}</td>
                                 <td id="0_group_13_btn" width="7%"><button id="btn_0_13" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_13_Lockbtn" width="7%"><button id="lock_btn_0_13" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/13"><button id="btn_toGroup_13" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_13" colspan="5"><a id="toGroupPageLink_13" href="#"><button id="btn_toGroup_13" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_14_gn"width="7%">第十四組</td>
@@ -194,7 +194,7 @@
                                 <td id="0_group_14_3" width="12%">{{all_simu_group_info[14][2]}}</td>
                                 <td id="0_group_14_btn" width="7%"><button id="btn_0_14" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_14_Lockbtn" width="7%"><button id="lock_btn_0_14" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/14"><button id="btn_toGroup_14" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_14" colspan="5"><a id="toGroupPageLink_14" href="#"><button id="btn_toGroup_14" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_15_gn" width="7%">第十五組</td>
@@ -203,7 +203,7 @@
                                 <td id="0_group_15_3" width="12%">{{all_simu_group_info[15][2]}}</td>
                                 <td id="0_group_15_btn" width="7%"><button id="btn_0_15" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_15_Lockbtn" width="7%"><button id="lock_btn_0_15" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/15"><button id="btn_toGroup_15" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_15" colspan="5"><a id="toGroupPageLink_15" href="#"><button id="btn_toGroup_15" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_16_gn" width="7%">第十六組</td>
@@ -212,7 +212,7 @@
                                 <td id="0_group_16_3" width="12%">{{all_simu_group_info[16][2]}}</td>
                                 <td id="0_group_16_btn" width="7%"><button id="btn_0_16" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_16_Lockbtn" width="7%"><button id="lock_btn_0_16" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/16"><button id="btn_toGroup_16" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_16" colspan="5"><a id="toGroupPageLink_16" href="#"><button id="btn_toGroup_16" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_17_gn" width="7%">第十七組</td>
@@ -221,7 +221,7 @@
                                 <td id="0_group_17_3" width="12%">{{all_simu_group_info[17][2]}}</td>
                                 <td id="0_group_17_btn" width="7%"><button id="btn_0_17" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_17_Lockbtn" width="7%"><button id="lock_btn_0_17" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/17"><button id="btn_toGroup_17" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_17" colspan="5"><a id="toGroupPageLink_17" href="#"><button id="btn_toGroup_17" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_18_gn" width="7%">第十八組</td>
@@ -230,7 +230,7 @@
                                 <td id="0_group_18_3" width="12%">{{all_simu_group_info[18][2]}}</td>
                                 <td id="0_group_18_btn" width="7%"><button id="btn_0_18" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_18_Lockbtn" width="7%"><button id="lock_btn_0_18" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/18"><button id="btn_toGroup_18" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_18" colspan="5"><a id="toGroupPageLink_18" href="#"><button id="btn_toGroup_18" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>    
                                 <td id="0_group_19_gn" width="7%">第十九組</td>
@@ -239,7 +239,7 @@
                                 <td id="0_group_19_3" width="12%">{{all_simu_group_info[19][2]}}</td>
                                 <td id="0_group_19_btn" width="7%"><button id="btn_0_19" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_19_Lockbtn" width="7%"><button id="lock_btn_0_19" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/19"><button id="btn_toGroup_19" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_19" colspan="5"><a id="toGroupPageLink_19" href="#"><button id="btn_toGroup_19" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>    
                                 <td id="0_group_20_gn" width="7%">第二十組</td>
@@ -248,7 +248,7 @@
                                 <td id="0_group_20_3" width="12%">{{all_simu_group_info[20][2]}}</td>
                                 <td id="0_group_20_btn" width="7%"><button id="btn_0_20" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_20_Lockbtn" width="7%"><button id="lock_btn_0_20" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/20"><button id="btn_toGroup_20" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_20" colspan="5"><a id="toGroupPageLink_20" href="#"><button id="btn_toGroup_20" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_21_gn" width="7%">第二十一組</td>
@@ -257,7 +257,7 @@
                                 <td id="0_group_21_3" width="12%">{{all_simu_group_info[21][2]}}</td>
                                 <td id="0_group_21_btn" width="7%"><button id="btn_0_21" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_21_Lockbtn" width="7%"><button id="lock_btn_0_21" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/21"><button id="btn_toGroup_21" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_21" colspan="5"><a id="toGroupPageLink_21" href="#"><button id="btn_toGroup_21" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_22_gn" width="7%">第二十二組</td>
@@ -266,7 +266,7 @@
                                 <td id="0_group_22_3" width="12%">{{all_simu_group_info[22][2]}}</td>
                                 <td id="0_group_22_btn" width="7%"><button id="btn_0_22" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_22_Lockbtn" width="7%"><button id="lock_btn_0_22" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/22"><button id="btn_toGroup_22" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_22" colspan="5"><a id="toGroupPageLink_22" href="#"><button id="btn_toGroup_22" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_23_gn" width="7%">第二十三組</td>
@@ -275,7 +275,7 @@
                                 <td id="0_group_23_3" width="12%">{{all_simu_group_info[23][2]}}</td>
                                 <td id="0_group_23_btn" width="7%"><button id="btn_0_23" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_23_Lockbtn" width="7%"><button id="lock_btn_0_23" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/23"><button id="btn_toGroup_23" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_23" colspan="5"><a id="toGroupPageLink_23" href="#"><button id="btn_toGroup_23" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_24_gn" width="7%">第二十四組</td>
@@ -284,7 +284,7 @@
                                 <td id="0_group_24_3" width="12%">{{all_simu_group_info[24][2]}}</td>
                                 <td id="0_group_24_btn" width="7%"><button id="btn_0_24" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_24_Lockbtn" width="7%"><button id="lock_btn_0_24" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/24"><button id="btn_toGroup_24" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_24" colspan="5"><a id="toGroupPageLink_24" href="#"><button id="btn_toGroup_24" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_25_gn" width="7%">第二十五組</td>
@@ -293,7 +293,7 @@
                                 <td id="0_group_25_3" width="12%">{{all_simu_group_info[25][2]}}</td>
                                 <td id="0_group_25_btn" width="7%"><button id="btn_0_25" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_25_Lockbtn" width="7%"><button id="lock_btn_0_25" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/25"><button id="btn_toGroup_25" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_25" colspan="5"><a id="toGroupPageLink_25" href="#"><button id="btn_toGroup_25" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_26_gn" width="7%">第二十六組</td>
@@ -302,7 +302,7 @@
                                 <td id="0_group_26_3" width="12%">{{all_simu_group_info[26][2]}}</td>
                                 <td id="0_group_26_btn" width="7%"><button id="btn_0_26" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_26_Lockbtn" width="7%"><button id="lock_btn_0_26" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/26"><button id="btn_toGroup_26" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_26" colspan="5"><a id="toGroupPageLink_26" href="#"><button id="btn_toGroup_26" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_27_gn" width="7%">第二十七組</td>
@@ -311,7 +311,7 @@
                                 <td id="0_group_27_3" width="12%">{{all_simu_group_info[27][2]}}</td>
                                 <td id="0_group_27_btn" width="7%"><button id="btn_0_27" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_27_Lockbtn" width="7%"><button id="lock_btn_0_27" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/27"><button id="btn_toGroup_27" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_27" colspan="5"><a id="toGroupPageLink_27" href="#"><button id="btn_toGroup_27" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>
                                 <td id="0_group_28_gn" width="7%">第二十八組</td>
@@ -320,7 +320,7 @@
                                 <td id="0_group_28_3" width="12%">{{all_simu_group_info[28][2]}}</td>
                                 <td id="0_group_28_btn" width="7%"><button id="btn_0_28" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_28_Lockbtn" width="7%"><button id="lock_btn_0_28" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/28"><button id="btn_toGroup_28" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_28" colspan="5"><a id="toGroupPageLink_28" href="#"><button id="btn_toGroup_28" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>    
                                 <td id="0_group_29_gn" width="7%">第二十九組</td>
@@ -329,7 +329,7 @@
                                 <td id="0_group_29_3" width="12%">{{all_simu_group_info[29][2]}}</td>
                                 <td id="0_group_29_btn" width="7%"><button id="btn_0_29" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_29_Lockbtn" width="7%"><button id="lock_btn_0_29" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/29"><button id="btn_toGroup_29" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_29" colspan="5"><a id="toGroupPageLink_29" href="#"><button id="btn_toGroup_29" disabled>前往小組頁面</button></a></td>
                             </tr>
                             <tr>    
                                 <td id="0_group_30_gn" width="7%">第三十組</td>
@@ -338,7 +338,7 @@
                                 <td id="0_group_30_3" width="12%">{{all_simu_group_info[30][2]}}</td>
                                 <td id="0_group_30_btn" width="7%"><button id="btn_0_30" onclick="joinClicked(this.id)">加入</button></td>
                                 <td id="0_group_30_Lockbtn" width="7%"><button id="lock_btn_0_30" onclick="lockClicked(this.id)">鎖定</button></td>
-                                <td id="0_activity_btn" colspan="5"><a href="http://140.115.53.202:5000/groupPage/30"><button id="btn_toGroup_30" disabled>前往小組頁面</button></a></td>
+                                <td style="background-color: silver;" id="0_activity_btn_30" colspan="5"><a id="toGroupPageLink_30" href="#"><button id="btn_toGroup_30" disabled>前往小組頁面</button></a></td>
                             </tr>
                         </tbody>
                     </table>    
@@ -366,6 +366,13 @@
         let sendMsgBtn = document.querySelector('#send-msg-btn')
         let messageBox = document.querySelector('#message-box')
         let leaveroom = document.querySelector('#leaveroom')
+        let urlHeader = location.protocol + '//' + document.domain + ':' + location.port;
+        let toHomeBtnTag = document.querySelector('#toHomeBtn')
+        toHomeBtnTag.setAttribute('href', [urlHeader, "/home"].join(''))
+        for(i = 1; i <= 30 ; i++){
+            let toGroupLinkTag = document.querySelector(['#toGroupPageLink_', i.toString()].join(''))
+            toGroupLinkTag.setAttribute('href', [urlHeader, "/groupPage/", i.toString()].join(''))
+        }
         let socket = io();
         // console.log(locked_groups_str.length);
         if(locked_groups_str.length == 1 ){
@@ -479,7 +486,9 @@
             lock_td_2.style.backgroundColor = "Silver";
             let lock_td_3 = document.getElementById("0_group_" + group.toString() + "_3");
             lock_td_3.style.backgroundColor = "Silver";
-            let to_group_page_btn = document.getElementById("btn_toGroup_" + group.toString());
+            let lock_toGroupPage_td = document.getElementById("0_activity_btn_" + group.toString());
+            lock_toGroupPage_td.style.backgroundColor = "#EAEAEA";
+            let to_group_page_btn = document.getElementById("btn_toGroup_" + group.toString());  
             to_group_page_btn.disabled = false;
         }
 
@@ -498,14 +507,19 @@
             });
         }
         function lockClicked(clickID) {
-            if(confirm("確定與目前組員共同進行活動嗎？\n 按下「確定」將無法變動組員。")){
-                let simuNum = parseInt(clickID.split("_")[2]);
-                let group = parseInt(clickID.split("_")[3]);
+            let simuNum = parseInt(clickID.split("_")[2]);
+            let group = parseInt(clickID.split("_")[3]);
+            let lock_td_1 = document.getElementById("0_group_" + group.toString() + "_1");
+            let lock_td_2 = document.getElementById("0_group_" + group.toString() + "_2");
+            let lock_td_3 = document.getElementById("0_group_" + group.toString() + "_3");
+            if(lock_td_1.innerHTML === username || lock_td_2.innerHTML === username || lock_td_3.innerHTML === username){
+                if(confirm("確定與目前組員共同進行活動嗎？\n 按下「確定」將無法變動組員。")){
                 socket.emit('lock group info', {
                     simuNum: simuNum,
                     group: group
                 })
-            }            
+            } 
+            }          
         }
     </script>
 </body>

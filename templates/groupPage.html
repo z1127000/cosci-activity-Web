@@ -57,7 +57,7 @@
     <div class="nav-wrapper teal">
         <ul>
             <li><a class="brand-logo center">海山高中電腦輔助科學探究體驗營</a></li>
-            <li><a href="http://140.115.53.202:5000/group">返回分組頁面</a></li>
+            <li><a id="toGroupLink" href="#">返回分組頁面</a></li>
         </ul>
     </div>
 </nav>
@@ -209,6 +209,9 @@
         collisionLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=5g8CFI1515985952004&room=", collisionRooms[groupname - 1],"&amount=1&maxuser=10&sync=false&lang=zh_TW"].join(''))
         let wallfrictionLinkTag = document.querySelector('#wallfrictionLink')
         wallfrictionLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=JNEEGO1697100022903&room=", wallfrictionRooms[groupname - 1],"&amount=1&maxuser=10&sync=false&lang=zh_TW"].join(''))
+        let urlHeader = location.protocol + '//' + document.domain + ':' + location.port;
+        let toGroupBtnTag = document.querySelector('#toGroupLink')
+        toGroupBtnTag.setAttribute('href', [urlHeader, "/group"].join(''))
         // let leaveroom = document.querySelector('#leaveroom')
         let socket = io();
         // 連接
