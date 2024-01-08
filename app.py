@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_socketio import SocketIO, join_room, leave_room
-import numpy as np
-import csv
 import datetime
 import pymongo
 
@@ -224,6 +222,6 @@ def on_leave(data):
 
 
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port=5000)
+    socketio.run(app, host='0.0.0.0', port=5000, debug=True)
 
 #ip:140.115.53.202
