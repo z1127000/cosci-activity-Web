@@ -29,6 +29,7 @@ mongo_db = mongo_client["metaWeb"]
 all_chat_collection = mongo_db["metaWebAllChat"]
 group_chat_collection = mongo_db["metaWebGroupChat"]
 grouping_msg_collection = mongo_db["metaWebGroupingMsg"]
+locked_group_msg_collection = mongo_db["metaWebLockedGroupMsg"]
 
 # with open(f'log/{start_log_time.date()}_{start_log_time.hour}_log.csv', 'w') as file:
 #     header = ['name', 'message', 'room', 'time']
@@ -144,6 +145,7 @@ def handle_message(data):
 def handle_lock_group(data):
     group = data.get('group')
     grouping_log = dict()
+    locked_group_log = dict()
     if all_simu_group_info[group][0] != "" or all_simu_group_info[group][1] != "" or all_simu_group_info[group][2] != "":
         locked_groups.append(group)
         room = session.get('room')
@@ -154,10 +156,16 @@ def handle_lock_group(data):
             else:
                 all_members.pop(name)
 
+        print(f"group {group} locked. member:{all_simu_group_info[group]}")
         grouping_log["group_Info"] = all_simu_group_info
         grouping_log["isoTime"] = datetime.datetime.now(tz=tzone).isoformat()
         grouping_log["time"] = datetime.datetime.now(tz=tzone)
         grouping_msg_collection.insert_one(grouping_log)
+        locked_group_log["group"] = group
+        locked_group_log['member'] = all_simu_group_info[group]
+        locked_group_log["isoTime"] = datetime.datetime.now(tz=tzone).isoformat()
+        locked_group_log["time"] = datetime.datetime.now(tz=tzone)
+        locked_group_msg_collection.insert_one(locked_group_log)
 
         socketio.emit('lock group', data, to=room)
 
@@ -169,7 +177,6 @@ def handle_group_info(data):
     simuNum = data.get('simuNum')
     group = data.get('group')
     room = session.get('room')
-    grouping_log = dict()
     if group in locked_groups:
         return
     if simuNum == 0:
@@ -222,6 +229,6 @@ def on_leave(data):
 
 
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port=80, debug=True)
+    socketio.run(app, host='0.0.0.0', port=5000)
 
 #ip:140.115.53.202
