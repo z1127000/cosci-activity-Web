@@ -67,7 +67,7 @@
         <div id="link-box-all" class="col s9">
             <h5>與組員一起在右側的聊天室討論要進行下列哪個活動。選好後請和組員共同按下「前往模擬表單」以及「模擬圖片」進入同一個模擬進行操作。</h5>
             <h5>以下為進入模擬表單的操作說明：</h5>
-            <h5>點選「登入」。再點選你的組別並選擇你的名字，密碼為你名字旁邊的數字。接下來，將可與組員共同討論問題並回答與編輯答案。</h5>
+            <h5>點選「登入」。再點選你的組別並選擇你的名字，密碼是789。接下來，將可與組員共同討論問題並回答與編輯答案。</h5>
             <br>
             <br>
             <br>
@@ -192,7 +192,7 @@
     <script>
         let room = '{{ room }}'
         let username = '{{ username }}'
-        let groupnameStr = '{{ groupname }}'
+        let groupnameStr = '{{ groupname }}' 
         let groupname = parseInt(groupnameStr)
         let frictionRooms = ["J85T1K270013","AWg2hi322900","ZVhG8m347591","GrVaKb414501","NgBFd3428612","l3Cxg8439108","Ofmmxz487717","z1t708521036","ut0l4t532756","OPLLH6545428","r9mb2K558748","0TUMQl570700","bL2nW4587268","dGl0DE604317","Cm2Nt5621324","Cm2Nt5621316","Cm2Nt5621317","Cm2Nt5621318","Cm2Nt5621319","Cm2Nt5621320","Cm2Nt5621321","Cm2Nt5621322","Cm2Nt5621323","Cm2Nt5621324","Cm2Nt5621325","Cm2Nt5621326","Cm2Nt5621327","Cm2Nt5621328","Cm2Nt5621329","Cm2Nt5621330"]
         let archerRooms = ["Ki2xNG748563","KP0Dk6128219","ra6iBr157371","guyWSw166732","iyd7rs180475","MzKiyi190163","7yANpy199332","cdlGxT208650","ocdz7h216875","38Q8nh228371","gd4TKZ237265","b2rWka247225","oUmgOh256577","EolG7x265211","4m98EE274016","4m98EE274017","4m98EE274018","4m98EE274019","4m98EE274020","4m98EE274021","4m98EE274022","4m98EE274023","4m98EE274024","4m98EE274025","4m98EE274026","4m98EE274027","4m98EE274028","4m98EE274029","4m98EE274030","4m98EE274031"]
@@ -202,13 +202,13 @@
         let sendMsgBtn = document.querySelector('#send-msg-btn')
         let messageBox = document.querySelector('#message-box')
         let frictionLinkTag = document.querySelector('#frictionLink')
-        frictionLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=iyFd0h1697099704032&room=", frictionRooms[groupname - 1],"&amount=1&maxuser=5&sync=false&lang=zh_TW"].join(''))
+        frictionLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=iyFd0h1697099704032&room=", frictionRooms[groupname - 1],"&amount=1&maxuser=6&sync=false&lang=zh_TW"].join(''))
         let archerLinkTag = document.querySelector('#archerLink')
-        archerLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=PhzlN71632455566649&room=", archerRooms[groupname - 1],"&amount=1&maxuser=5&sync=false&lang=zh_TW"].join(''))
+        archerLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=PhzlN71632455566649&room=", archerRooms[groupname - 1],"&amount=1&maxuser=6&sync=false&lang=zh_TW"].join(''))
         let collisionLinkTag = document.querySelector('#collisionLink')
-        collisionLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=5g8CFI1515985952004&room=", collisionRooms[groupname - 1],"&amount=1&maxuser=5&sync=false&lang=zh_TW"].join(''))
+        collisionLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=5g8CFI1515985952004&room=", collisionRooms[groupname - 1],"&amount=1&maxuser=6&sync=false&lang=zh_TW"].join(''))
         let wallfrictionLinkTag = document.querySelector('#wallfrictionLink')
-        wallfrictionLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=JNEEGO1697100022903&room=", wallfrictionRooms[groupname - 1],"&amount=1&maxuser=5&sync=false&lang=zh_TW"].join(''))
+        wallfrictionLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=JNEEGO1697100022903&room=", wallfrictionRooms[groupname - 1],"&amount=1&maxuser=6&sync=false&lang=zh_TW"].join(''))
         let urlHeader = location.protocol + '//' + document.domain + ':' + location.port;
         let toGroupBtnTag = document.querySelector('#toGroupLink')
         toGroupBtnTag.setAttribute('href', [urlHeader, "/group"].join(''))

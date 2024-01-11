@@ -51,7 +51,11 @@ def check_group_position(data, simuNum):
 def index():
     if request.method == 'GET':
         now_users_str = ""
-        now_users_str = ("---").join(now_users)
+        global now_users
+        if None in now_users:
+            now_users = list(filter(None, now_users))
+        if len(now_users) > 0:
+            now_users_str = ("-=-").join(now_users)
         if 'username' in session:
             return redirect(url_for('home'))
         return render_template('index.html', now_users_str = now_users_str)
@@ -61,6 +65,8 @@ def index():
         now_users.append(username)
         session['username'] = username
         session['room'] = room
+        if(room == None):
+            session['room'] = "initial_room"
         socketio.emit('user enter act', {"user":username})
         return redirect(url_for('home'))
 
@@ -69,6 +75,9 @@ def home():
     if 'username' in session and 'room' in session:
         username = session['username']
         room = session['room']
+        if(room == None):
+            session['room'] = "initial_room"
+            room = "initial_room"
         return render_template('home.html', username=username, room=room)
     else:
         return redirect(url_for('index'))
@@ -81,6 +90,9 @@ def group():
         username = session['username']
         room = session['room']
         locked_groups_str = ""
+        global locked_groups
+        if None in locked_groups:
+            locked_groups = list(filter(None, locked_groups))
         if len(locked_groups) == 1:
             locked_groups_str = str(locked_groups[0])
         elif len(locked_groups) >= 2:
@@ -129,11 +141,11 @@ def handle_message(data):
     msg_log["msg"] = data['message']
     msg_log["isoTime"] = datetime.datetime.now(tz=tzone).isoformat()
     msg_log["time"] = datetime.datetime.now(tz=tzone)
-    if data.get('room') == 'None':
+    if data.get('room') == 'initial_room':
         msg_log["room"] = "全體聊天室"
         all_chat_collection.insert_one(msg_log)
-    elif room_split[0] == "None":
-        msg_log["room"] = room_split[1]
+    elif room_split[0] == "initial" and room_split[1] == "room":
+        msg_log["room"] = room_split[2]
         group_chat_collection.insert_one(msg_log)
     else:
         msg_log["room"] = ""

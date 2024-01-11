@@ -53,7 +53,11 @@
     let roominp = document.querySelector('#room');
     let btn = document.querySelector('#submit');
     let now_user_str = "{{now_users_str}}"
-    let now_user = now_user_str.split("---");
+    let now_user = [];
+    if(now_user_str !== "")
+    {
+        now_user = now_user_str.split("-=-");
+    }
 
     let socket = io();
     // 連接
