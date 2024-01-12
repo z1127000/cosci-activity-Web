@@ -52,8 +52,8 @@ def index():
         if len(now_users) > 0:
             now_users_str = ("-=-").join(now_users)
         if 'username' in session:
-            # return render_template('home.html', username=username, room=room)
-            return redirect(url_for('home'))
+            return render_template('home.html', username=username, room=room)
+            # return redirect(url_for('home'))
         return render_template('index.html', now_users_str = now_users_str)
     else:
         username = request.form.get('username')
@@ -64,12 +64,13 @@ def index():
         if(room == None):
             session['room'] = "initial_room"
         socketio.emit('user enter act', {"user":username})
-        # return render_template('home.html', username=username, room=room)
-        return redirect(url_for('home'))
+        return render_template('home.html', username=username, room=room)
+        # return redirect(url_for('home'))
 
 @app.route('/home/')
 def home():
     if 'username' in session and 'room' in session:
+        print(session)
         username = session['username']
         room = session['room']
         if(room == None):
@@ -77,19 +78,19 @@ def home():
             room = "initial_room"
         return render_template('home.html', username=username, room=room)
     else:
-        # global now_users
-        # if None in now_users:
-        #     now_users = list(filter(None, now_users))
-        # if len(now_users) > 0:
-        #     now_users_str = ("-=-").join(now_users)
-        # return render_template('index.html', now_users_str = now_users_str)
-        return redirect(url_for('index'))
+        global now_users
+        if None in now_users:
+            now_users = list(filter(None, now_users))
+        if len(now_users) > 0:
+            now_users_str = ("-=-").join(now_users)
+        return render_template('index.html', now_users_str = now_users_str)
+        # return redirect(url_for('index'))
 
 
 @app.route('/group/')
 def group():
-    print(session)
     if 'username' in session and 'room' in session:
+        print(session)
         username = session['username']
         room = session['room']
         locked_groups_str = ""
@@ -105,17 +106,13 @@ def group():
             locked_groups_str = "_".join(str_lock_groups)
         return render_template('group.html', username=username, room=room, all_simu_group_info=all_simu_group_info, locked_groups_str=locked_groups_str)
     else:
-        # global now_users
-        # if None in now_users:
-        #     now_users = list(filter(None, now_users))
-        # if len(now_users) > 0:
-        #     now_users_str = ("-=-").join(now_users)
-        # return render_template('index.html', now_users_str = now_users_str)
-        return redirect(url_for('index'))    
-
-@app.route('/test')
-def testPage():
-    return render_template({"test":"1127000"})
+        global now_users
+        if None in now_users:
+            now_users = list(filter(None, now_users))
+        if len(now_users) > 0:
+            now_users_str = ("-=-").join(now_users)
+        return render_template('index.html', now_users_str = now_users_str)
+        # return redirect(url_for('index'))    
 
 
 @app.route('/groupPage')
@@ -125,17 +122,18 @@ def groupPageNoPara():
 @app.route('/groupPage/<groupname>')
 def groupPage(groupname):
     if 'username' in session and 'room' in session:
+        print(session)
         username = session['username']
         room = str(session['room']) + "_" + str(groupname)
         return render_template('groupPage.html', username=username, room=room, groupname=groupname)
     else:
-        # global now_users
-        # if None in now_users:
-        #     now_users = list(filter(None, now_users))
-        # if len(now_users) > 0:
-        #     now_users_str = ("-=-").join(now_users)
-        # return render_template('index.html', now_users_str = now_users_str)
-        return redirect(url_for('index'))
+        global now_users
+        if None in now_users:
+            now_users = list(filter(None, now_users))
+        if len(now_users) > 0:
+            now_users_str = ("-=-").join(now_users)
+        return render_template('index.html', now_users_str = now_users_str)
+        # return redirect(url_for('index'))
 
 
 
