@@ -51,7 +51,9 @@ def index():
             now_users = list(filter(None, now_users))
         if len(now_users) > 0:
             now_users_str = ("-=-").join(now_users)
-        if 'username' in session:
+        if 'username' in session  and 'room' in session:
+            username = session['username']
+            room = session['room']
             return render_template('home.html', username=username, room=room)
             # return redirect(url_for('home'))
         return render_template('index.html', now_users_str = now_users_str)
@@ -95,6 +97,7 @@ def group():
         room = session['room']
         locked_groups_str = ""
         global locked_groups
+        global all_simu_group_info
         if None in locked_groups:
             locked_groups = list(filter(None, locked_groups))
         if len(locked_groups) == 1:
