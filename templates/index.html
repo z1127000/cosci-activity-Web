@@ -61,8 +61,8 @@
 
     let socket = io();
     // 連接
-    // socket.connect(location.protocol + '//' + document.domain + ':' + location.port);
-    socket.connect("https://coinquiry.cosci.tw");
+    socket.connect(location.protocol + '//' + document.domain + ':' + location.port);
+    // socket.connect("https://coinquiry.cosci.tw");
     // 加入
 
     function nameValidate() {

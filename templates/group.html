@@ -366,8 +366,8 @@
         let sendMsgBtn = document.querySelector('#send-msg-btn')
         let messageBox = document.querySelector('#message-box')
         let leaveroom = document.querySelector('#leaveroom')
-        // let urlHeader = location.protocol + '//' + document.domain + ':' + location.port;
-        let urlHeader ="https://coinquiry.cosci.tw";
+        let urlHeader = location.protocol + '//' + document.domain + ':' + location.port;
+        // let urlHeader ="https://coinquiry.cosci.tw";
         let toHomeBtnTag = document.querySelector('#toHomeBtn')
         toHomeBtnTag.setAttribute('href', [urlHeader, "/home"].join(''))
         for(i = 1; i <= 30 ; i++){
@@ -385,8 +385,8 @@
             }
         }
         // 連接
-        // socket.connect(location.protocol + '//' + document.domain + ':' + location.port);
-        socket.connect("https://coinquiry.cosci.tw");
+        socket.connect(location.protocol + '//' + document.domain + ':' + location.port);
+        // socket.connect("https://coinquiry.cosci.tw");
         // 加入
         socket.emit('join', {
             username: username,
