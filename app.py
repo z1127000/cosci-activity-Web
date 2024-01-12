@@ -31,11 +31,6 @@ group_chat_collection = mongo_db["metaWebGroupChat"]
 grouping_msg_collection = mongo_db["metaWebGroupingMsg"]
 locked_group_msg_collection = mongo_db["metaWebLockedGroupMsg"]
 
-# with open(f'log/{start_log_time.date()}_{start_log_time.hour}_log.csv', 'w') as file:
-#     header = ['name', 'message', 'room', 'time']
-#     log_writer = csv.writer(file)
-#     log_writer.writerow(header)
-
 
 def check_group_position(data, simuNum):
     tmp_position = -1
@@ -57,7 +52,8 @@ def index():
         if len(now_users) > 0:
             now_users_str = ("-=-").join(now_users)
         if 'username' in session:
-            return redirect(url_for('home'))
+            return render_template('home.html', username=username, room=room)
+            # return redirect(url_for('home'))
         return render_template('index.html', now_users_str = now_users_str)
     else:
         username = request.form.get('username')
@@ -68,7 +64,8 @@ def index():
         if(room == None):
             session['room'] = "initial_room"
         socketio.emit('user enter act', {"user":username})
-        return redirect(url_for('home'))
+        return render_template('home.html', username=username, room=room)
+        # return redirect(url_for('home'))
 
 @app.route('/home/')
 def home():
@@ -80,7 +77,13 @@ def home():
             room = "initial_room"
         return render_template('home.html', username=username, room=room)
     else:
-        return redirect(url_for('index'))
+        global now_users
+        if None in now_users:
+            now_users = list(filter(None, now_users))
+        if len(now_users) > 0:
+            now_users_str = ("-=-").join(now_users)
+        return render_template('index.html', now_users_str = now_users_str)
+        # return redirect(url_for('index'))
 
 
 @app.route('/group/')
@@ -102,7 +105,13 @@ def group():
             locked_groups_str = "_".join(str_lock_groups)
         return render_template('group.html', username=username, room=room, all_simu_group_info=all_simu_group_info, locked_groups_str=locked_groups_str)
     else:
-        return redirect(url_for('index'))    
+        global now_users
+        if None in now_users:
+            now_users = list(filter(None, now_users))
+        if len(now_users) > 0:
+            now_users_str = ("-=-").join(now_users)
+        return render_template('index.html', now_users_str = now_users_str)
+        # return redirect(url_for('index'))    
 
 @app.route('/groupPage')
 def groupPageNoPara():
@@ -115,7 +124,13 @@ def groupPage(groupname):
         room = str(session['room']) + "_" + str(groupname)
         return render_template('groupPage.html', username=username, room=room, groupname=groupname)
     else:
-        return redirect(url_for('index'))
+        global now_users
+        if None in now_users:
+            now_users = list(filter(None, now_users))
+        if len(now_users) > 0:
+            now_users_str = ("-=-").join(now_users)
+        return render_template('index.html', now_users_str = now_users_str)
+        # return redirect(url_for('index'))
 
 
 
@@ -241,6 +256,7 @@ def on_leave(data):
 
 
 if __name__ == '__main__':
+    # socketio.run(app, host='0.0.0.0', port=5000)
     socketio.run(app, host='0.0.0.0', port=3080)
 
 #ip:140.115.53.202
