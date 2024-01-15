@@ -57,7 +57,7 @@
     <div class="nav-wrapper teal">
         <ul>
             <li><a class="brand-logo center">海山高中電腦輔助科學探究體驗營</a></li>
-            <li><a id="toHomeBtn" href="https://coinquiry.cosci.tw/home/">返回首頁</a></li>
+            <li><a id="toHomeBtn" href="#">返回首頁</a></li>
         </ul>
     </div>
 </nav>
@@ -369,7 +369,7 @@
         // let urlHeader = location.protocol + '//' + document.domain + ':' + location.port;
         let urlHeader ="https://coinquiry.cosci.tw";
         let toHomeBtnTag = document.querySelector('#toHomeBtn')
-        toHomeBtnTag.setAttribute('href', [urlHeader, "/home"].join(''))
+        toHomeBtnTag.setAttribute('href', [urlHeader, "/home/"].join(''))
         for(i = 1; i <= 30 ; i++){
             let toGroupLinkTag = document.querySelector(['#toGroupPageLink_', i.toString()].join(''))
             toGroupLinkTag.setAttribute('href', [urlHeader, "/groupPage/", i.toString()].join(''))
