@@ -12,6 +12,10 @@
         table, th, td {
             border: 1px solid black;
             text-align: center;
+            background-color: #eceff1;
+        }
+        a {
+            color: black;
         }
         #message-box {
             overflow-y: scroll;
@@ -442,6 +446,10 @@
             let group = data.group;
             lock_group(group);
         })
+        socket.on('unlock group', function (data) {
+            let group = data.group;
+            unlock_group(group);
+        })
         // 接受訊息
         socket.on('send msg', function (data) {
             if(data.room === room){
@@ -486,9 +494,29 @@
             let lock_td_3 = document.getElementById("0_group_" + group.toString() + "_3");
             lock_td_3.style.backgroundColor = "Silver";
             let lock_toGroupPage_td = document.getElementById("0_activity_btn_" + group.toString());
-            lock_toGroupPage_td.style.backgroundColor = "#EAEAEA";
+            lock_toGroupPage_td.style.backgroundColor = "#eceff1";
             let to_group_page_btn = document.getElementById("btn_toGroup_" + group.toString());  
             to_group_page_btn.disabled = false;
+        }
+
+        function unlock_group(group){
+            let join_btn = document.getElementById("btn_0_" + group.toString());
+            join_btn.disabled = false;
+            let lock_btn = document.getElementById("lock_btn_0_" + group.toString());  
+            lock_btn.disabled = false;
+            let lock_td_1 = document.getElementById("0_group_" + group.toString() + "_1");
+            lock_td_1.style.backgroundColor = "#eceff1";
+            lock_td_1.innerHTML = "";
+            let lock_td_2 = document.getElementById("0_group_" + group.toString() + "_2");
+            lock_td_2.style.backgroundColor = "#eceff1";
+            lock_td_2.innerHTML = "";
+            let lock_td_3 = document.getElementById("0_group_" + group.toString() + "_3");
+            lock_td_3.style.backgroundColor = "#eceff1";
+            lock_td_3.innerHTML = "";
+            let lock_toGroupPage_td = document.getElementById("0_activity_btn_" + group.toString());
+            lock_toGroupPage_td.style.backgroundColor = "Silver";
+            let to_group_page_btn = document.getElementById("btn_toGroup_" + group.toString());  
+            to_group_page_btn.disabled = true;
         }
 
         function joinClicked(clickID) {
@@ -513,11 +541,11 @@
             let lock_td_3 = document.getElementById("0_group_" + group.toString() + "_3");
             if(lock_td_1.innerHTML === username || lock_td_2.innerHTML === username || lock_td_3.innerHTML === username){
                 if(confirm("確定與目前組員共同進行活動嗎？\n 按下「確定」將無法變動組員。")){
-                socket.emit('lock group info', {
-                    simuNum: simuNum,
-                    group: group
-                })
-            } 
+                    socket.emit('lock group info', {
+                        simuNum: simuNum,
+                        group: group
+                    })
+                } 
             }          
         }
     </script>

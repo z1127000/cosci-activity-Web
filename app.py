@@ -81,6 +81,7 @@ def home():
         return render_template('home.html', username=username, room=room)
     else:
         global now_users
+        now_users_str = ""
         if None in now_users:
             now_users = list(filter(None, now_users))
         if len(now_users) > 0:
@@ -88,6 +89,23 @@ def home():
         return render_template('index.html', now_users_str = now_users_str)
         # return redirect(url_for('index'))
 
+@app.route('/admin')
+def admin():
+    username = session['username']
+    room = session['room']
+    global locked_groups
+    global all_simu_group_info
+    locked_groups_str = ""
+    if None in locked_groups:
+        locked_groups = list(filter(None, locked_groups))
+    if len(locked_groups) == 1:
+        locked_groups_str = str(locked_groups[0])
+    elif len(locked_groups) >= 2:
+        str_lock_groups = []
+        for group in locked_groups:
+            str_lock_groups.append(str(group))     
+        locked_groups_str = "_".join(str_lock_groups)
+    return render_template('admin.html', username=username, room=room, all_simu_group_info=all_simu_group_info, locked_groups_str=locked_groups_str)
 
 @app.route('/group/')
 def group():
@@ -110,6 +128,7 @@ def group():
         return render_template('group.html', username=username, room=room, all_simu_group_info=all_simu_group_info, locked_groups_str=locked_groups_str)
     else:
         global now_users
+        now_users_str = ""
         if None in now_users:
             now_users = list(filter(None, now_users))
         if len(now_users) > 0:
@@ -131,6 +150,7 @@ def groupPage(groupname):
         return render_template('groupPage.html', username=username, room=room, groupname=groupname)
     else:
         global now_users
+        now_users_str = ""
         if None in now_users:
             now_users = list(filter(None, now_users))
         if len(now_users) > 0:
@@ -202,6 +222,16 @@ def handle_lock_group(data):
 
         socketio.emit('lock group', data, to=room)
 
+@socketio.on('unlock group info')
+def handle_lock_group(data):
+    group = data.get('group')
+    locked_groups.remove(group)
+    room = session.get('room')
+    all_simu_group_info[group][0] = ""
+    all_simu_group_info[group][1] = ""
+    all_simu_group_info[group][2] = ""
+    socketio.emit('unlock group', data, to=room)
+
     
 
 @socketio.on('group info')
@@ -263,6 +293,6 @@ def on_leave(data):
 
 if __name__ == '__main__':
     # socketio.run(app, host='0.0.0.0', port=5000)
-    socketio.run(app, host='0.0.0.0', port=3080)
+    socketio.run(app, host='0.0.0.0', port=3080, debug=True)
 
 #ip:140.115.53.202
