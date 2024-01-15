@@ -30,7 +30,7 @@ all_chat_collection = mongo_db["metaWebAllChat"]
 group_chat_collection = mongo_db["metaWebGroupChat"]
 grouping_msg_collection = mongo_db["metaWebGroupingMsg"]
 locked_group_msg_collection = mongo_db["metaWebLockedGroupMsg"]
-
+print(grouping_msg_collection.find_one())
 
 def check_group_position(data, simuNum):
     tmp_position = -1
