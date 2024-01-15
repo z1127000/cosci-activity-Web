@@ -30,7 +30,7 @@ all_chat_collection = mongo_db["metaWebAllChat"]
 group_chat_collection = mongo_db["metaWebGroupChat"]
 grouping_msg_collection = mongo_db["metaWebGroupingMsg"]
 locked_group_msg_collection = mongo_db["metaWebLockedGroupMsg"]
-print(grouping_msg_collection.find_one())
+print(grouping_msg_collection.find_one(sort=[( 'time', pymongo.DESCENDING )]))
 
 def check_group_position(data, simuNum):
     tmp_position = -1
@@ -293,6 +293,6 @@ def on_leave(data):
 
 if __name__ == '__main__':
     # socketio.run(app, host='0.0.0.0', port=5000)
-    socketio.run(app, host='0.0.0.0', port=3080, debug=True)
+    socketio.run(app, host='0.0.0.0', port=3080)
 
 #ip:140.115.53.202
