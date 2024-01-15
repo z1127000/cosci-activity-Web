@@ -30,7 +30,6 @@ all_chat_collection = mongo_db["metaWebAllChat"]
 group_chat_collection = mongo_db["metaWebGroupChat"]
 grouping_msg_collection = mongo_db["metaWebGroupingMsg"]
 locked_group_msg_collection = mongo_db["metaWebLockedGroupMsg"]
-print(grouping_msg_collection.find_one(sort=[( 'time', pymongo.DESCENDING )]))
 
 def check_group_position(data, simuNum):
     tmp_position = -1
@@ -72,7 +71,6 @@ def index():
 @app.route('/home/')
 def home():
     if 'username' in session and 'room' in session:
-        print(session)
         username = session['username']
         room = session['room']
         if(room == None):
@@ -110,7 +108,6 @@ def admin():
 @app.route('/group/')
 def group():
     if 'username' in session and 'room' in session:
-        print(session)
         username = session['username']
         room = session['room']
         locked_groups_str = ""
@@ -144,7 +141,6 @@ def groupPageNoPara():
 @app.route('/groupPage/<groupname>')
 def groupPage(groupname):
     if 'username' in session and 'room' in session:
-        print(session)
         username = session['username']
         room = str(session['room']) + "_" + str(groupname)
         return render_template('groupPage.html', username=username, room=room, groupname=groupname)
