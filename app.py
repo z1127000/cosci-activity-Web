@@ -12,14 +12,16 @@ socketio.init_app(app)
 
 online_user = []
 room_user = {}
-all_members = dict()
 locked_groups = []
+test_locked_groups = []
 chat_log_all = []
 chat_log_group = dict()
 now_users = []
 
 all_members = dict()
+test_all_members = dict()
 all_simu_group_info = [["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""]]
+test_simu_group_info = [["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""]]
 
 tzone = datetime.timezone(datetime.timedelta(hours=8))
 start_log_time = datetime.datetime.now(tz=tzone)
@@ -36,6 +38,16 @@ def check_group_position(data, simuNum):
     if simuNum == 0:
         for i in [0,1,2]:
             if all_simu_group_info[data.get("group")][i] == "":
+                tmp_position = i
+                break
+    
+    return tmp_position
+
+def test_check_group_position(data, simuNum):
+    tmp_position = -1
+    if simuNum == 0:
+        for i in [0,1,2]:
+            if test_simu_group_info[data.get("group")][i] == "":
                 tmp_position = i
                 break
     
@@ -131,7 +143,36 @@ def group():
         if len(now_users) > 0:
             now_users_str = ("-=-").join(now_users)
         return render_template('index.html', now_users_str = now_users_str)
-        # return redirect(url_for('index'))    
+        # return redirect(url_for('index'))
+
+
+@app.route('/testgroup/')
+def testgroup():
+    if 'username' in session and 'room' in session:
+        username = session['username']
+        room = session['room'] + "_test"
+        locked_groups_str = ""
+        global test_locked_groups
+        global test_simu_group_info
+        if None in test_locked_groups:
+            test_locked_groups = list(filter(None, locked_groups))
+        if len(test_locked_groups) == 1:
+            locked_groups_str = str(test_locked_groups[0])
+        elif len(locked_groups) >= 2:
+            str_lock_groups = []
+            for group in test_locked_groups:
+                str_lock_groups.append(str(group))     
+            locked_groups_str = "_".join(str_lock_groups)
+        return render_template('exampleGroup.html', username=username, room=room, test_simu_group_info=test_simu_group_info, locked_groups_str=locked_groups_str)
+    else:
+        global now_users
+        now_users_str = ""
+        if None in now_users:
+            now_users = list(filter(None, now_users))
+        if len(now_users) > 0:
+            now_users_str = ("-=-").join(now_users)
+        return render_template('index.html', now_users_str = now_users_str)
+        # return redirect(url_for('index'))       
 
 
 @app.route('/groupPage')
@@ -144,6 +185,22 @@ def groupPage(groupname):
         username = session['username']
         room = str(session['room']) + "_" + str(groupname)
         return render_template('groupPage.html', username=username, room=room, groupname=groupname)
+    else:
+        global now_users
+        now_users_str = ""
+        if None in now_users:
+            now_users = list(filter(None, now_users))
+        if len(now_users) > 0:
+            now_users_str = ("-=-").join(now_users)
+        return render_template('index.html', now_users_str = now_users_str)
+        # return redirect(url_for('index'))
+    
+@app.route('/testgroupPage/<groupname>')
+def testgroupPage(groupname):
+    if 'username' in session and 'room' in session:
+        username = session['username']
+        room = str(session['room']) + "_test_" + str(groupname)
+        return render_template('exampleGroupPage.html', username=username, room=room, groupname=groupname)
     else:
         global now_users
         now_users_str = ""
@@ -218,6 +275,24 @@ def handle_lock_group(data):
 
         socketio.emit('lock group', data, to=room)
 
+@socketio.on('test lock group info')
+def handle_lock_group(data):
+    group = data.get('group')
+    if test_simu_group_info[group][0] != "" or test_simu_group_info[group][1] != "" or test_simu_group_info[group][2] != "":
+        test_locked_groups.append(group)
+        room = data.get('room')
+        locked_group_members = test_simu_group_info[group]
+        for name in locked_group_members:
+            if name == "":
+                break
+            else:
+                test_all_members.pop(name)
+
+        print(f"group {group} locked. member:{test_simu_group_info[group]}")
+
+        socketio.emit('test lock group', data, to=room)
+
+
 @socketio.on('unlock group info')
 def handle_lock_group(data):
     group = data.get('group')
@@ -228,7 +303,15 @@ def handle_lock_group(data):
     all_simu_group_info[group][2] = ""
     socketio.emit('unlock group', data, to=room)
 
-    
+@socketio.on('test unlock group info')
+def handle_lock_group(data):
+    group = data.get('group')
+    test_locked_groups.remove(group)
+    room = data.get('room')
+    test_simu_group_info[group][0] = ""
+    test_simu_group_info[group][1] = ""
+    test_simu_group_info[group][2] = ""
+    socketio.emit('test unlock group', data, to=room)
 
 @socketio.on('group info')
 def handle_group_info(data):
@@ -263,6 +346,42 @@ def handle_group_info(data):
 
                 socketio.emit('delete group Member', {"simuNum":simuNum, "group":prev_group, "position":prev_position}, to=room)
                 socketio.emit('add new Member', data, to=room)
+
+
+@socketio.on('test group info')
+def handle_group_info(data):
+    username = data.get('username')
+    simuNum = data.get('simuNum')
+    group = data.get('group')
+    room = data.get('room')
+    if group in test_locked_groups:
+        return
+    if simuNum == 0:
+        if list(test_all_members.keys()).count(username) == 0:
+            position = test_check_group_position(data, simuNum)
+            if position == -1:
+                socketio.emit('group full', {"user":username}, to=room)
+            else:
+                test_simu_group_info[group][position] = username
+                test_all_members[username] = group
+                data["position"] = position
+
+                socketio.emit('test add new Member', data, to=room)
+        elif test_all_members[username] != group:
+            prev_group = test_all_members[username]
+            prev_position = test_simu_group_info[prev_group].index(username)
+            position = test_check_group_position(data, simuNum)
+            if position == -1:
+                socketio.emit('group full', {"user":username}, to=room)
+            else:
+                test_simu_group_info[group][position] = username
+                test_simu_group_info[prev_group][prev_position] = ""
+                test_all_members[username] = group
+                data["position"] = position
+
+                socketio.emit('test delete group Member', {"simuNum":simuNum, "group":prev_group, "position":prev_position}, to=room)
+                socketio.emit('test add new Member', data, to=room)
+
 
 @socketio.on('join')
 def on_join(data):

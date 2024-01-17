@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <link rel="shortcut icon" href="/static/1.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>第{{groupname}}組</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+        table {
+            width: 300px;
+        }
+        #message-box {
+            overflow-y: scroll;
+            word-wrap: break-word;
+            height: 70vh;
+            padding: 2em 3em;
+        }
+        #chat-room {
+            height: 80vh;
+        }
+        #link-box-all {
+            height: 87vh;
+            overflow-y: scroll;
+            word-wrap: break-word;
+        }
+        .tag {
+            padding: 6px 10px;
+            border-radius: 9px;
+            max-width: 15em;
+        }
+        .connect-info {
+            margin:0 auto ;
+            padding: 4px 10px;
+            border-radius: 9px;
+            width: 15em;
+        }
+        .container {
+            margin-left:5%;
+        }
+    </style>
+</head>
+
+<body class="blue-grey lighten-5">
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<nav>
+    <div class="nav-wrapper teal">
+        <ul>
+            <li><a class="brand-logo center">海山高中電腦輔助科學探究體驗營</a></li>
+            <li><a id="toGroupLink" href="#">返回分組頁面</a></li>
+        </ul>
+    </div>
+</nav>
+    <div id="all-box" class="row">
+        <div class="row">  
+        </div>
+        <div id="link-box-all" class="col s9">
+            <h5>與組員一起在右側的聊天室討論要進行下列哪個活動。選好後請和組員共同按下「前往模擬表單」以及「模擬圖片」進入同一個模擬進行操作。</h5>
+            <h5>以下為進入模擬表單的操作說明：</h5>
+            <h5>點選「登入」。再點選你的組別並選擇你的名字，密碼是789。接下來，將可與組員共同討論問題並回答與編輯答案。</h5>
+            <br>
+            <br>
+            <br>
+            <div  class="row">
+                <div id="link-box1" class="col s6">
+                    <h5 style="text-align: center; font-weight: bold;">淋到多少雨</h5>
+                    <br>
+                    <h5 style="line-height: 150%;">這個示範活動只需要執行模擬一次並填入觀察所得的數據。</h5>
+                    <br>
+                    <div class="row">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>合作模擬</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a id="frictionLink" href="#" target="_blank"><img src="/static/frictionSimu.png" alt="合作模擬" width="200"/></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <a href="https://cosci.tw/logInActivity/?gn=f3QyKy197362&actType=0" target="_blank"><button id="btn_toAct_1">前往示範表單</button></a>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="chat-room" class="col s3">
+            <div id="groupChatroomTag" class="white"><p class="center">第{{groupname}}組聊天室</p></div>
+            <div id="message-box" class="col s12 white z-depth-1"></div>
+            <input id="send-msg-inp" type="text" class="validate">
+            <button id="send-msg-btn" class="btn waves-effect waves-light right" type="button"
+                    name="action">
+                send
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js"></script>
+    <script>
+        let room = '{{ room }}'
+        let username = '{{ username }}'
+        let groupnameStr = '{{ groupname }}' 
+        let groupname = parseInt(groupnameStr)
+        let frictionRooms = ["O85T1K270013","OWg2hi322900","OVhG8m347591","OrVaKb414501","OgBFd3428612","O3Cxg8439108","OOmmxz487717","O1t708521036","Ot0l4t532756","OOOLH6545428","O9mb2K558748","OTUMQl570700","OL2nW4587268","OGl0DE604317","Om2Nt5621324","Om2Nt5621316","Om2Nt5621317","Om2Nt5621318","Om2Nt5621319","Om2Nt5621320","Om2Nt5621321","Om2Nt5621322","Om2Nt5621323","Om2Nt5621324","Om2Nt5621325","Om2Nt5621326","Om2Nt5621327","Om2Nt5621328","Om2Nt5621329","Om2Nt5621330"]
+        let inp = document.querySelector('#send-msg-inp')
+        let sendMsgBtn = document.querySelector('#send-msg-btn')
+        let messageBox = document.querySelector('#message-box')
+        let frictionLinkTag = document.querySelector('#frictionLink')
+        frictionLinkTag.setAttribute('href', ["https://cosci.tw/gather?name=nkmEBy1506645045034&room=", frictionRooms[groupname - 1],"&amount=1&maxuser=6&sync=false&lang=zh_TW"].join(''))
+
+        // let urlHeader = location.protocol + '//' + document.domain + ':' + location.port;
+        let urlHeader ="https://coinquiry.cosci.tw";
+        let toGroupBtnTag = document.querySelector('#toGroupLink')
+        toGroupBtnTag.setAttribute('href', [urlHeader, "/testgroup/"].join(''))
+        // let leaveroom = document.querySelector('#leaveroom')
+        let socket = io();
+        // 連接
+        // socket.connect(location.protocol + '//' + document.domain + ':' + location.port);
+        socket.connect("http://127.0.0.1:3080");
+        // 加入
+        socket.emit('join', {
+            username: username,
+            room: room
+        })
+        // 退出
+        /*leaveroom.onclick = function () {
+            socket.emit('leave', {
+                username: username,
+                room: room
+            })
+        }*/
+        // 發送
+        sendMsgBtn.onclick = function () {
+            let inp = document.querySelector('#send-msg-inp')
+            let msg = inp.value
+            let user = username
+            inp.value = ''
+            console.log("send:"+msg);
+            if(msg){
+                socket.emit('send msg', {
+                    user: user,
+                    message: msg,
+                    room: room,
+                })
+                messageBox.scrollTop = messageBox.scrollHeight
+            }else {
+                alert('訊息不能是空的')
+            }
+        }
+        // enter發送
+        inp.addEventListener("keyup", function(event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                sendMsgBtn.click();
+            }
+        });
+        // 連接的訊息
+        socket.on('connect info', function (data) {
+            let connectInfo = document.createElement('div')
+            connectInfo.className = 'row'
+            let msg = `
+              <div class="col s4 offset-s4">
+                <div class="connect-info grey lighten-4 center" >
+                  <span class="black-text">${data}
+                  </span>
+                </div>
+              </div>`
+            connectInfo.innerHTML = msg
+            messageBox.appendChild(connectInfo)
+        })
+        // 接受訊息
+        socket.on('send msg', function (data) {
+            if(data.room === room){
+                console.log("receive:"+data)
+                console.log(data)
+                console.log(socket.id)
+                let msg = null
+                let msgbox = document.createElement('div')
+                msgbox.className = 'row'
+                if (data.user === username) {
+                    msg = `
+                  <div class="col right">
+                    <div class="tag teal z-depth-3" >
+                      <span class="white-text">${data.message}
+                      </span>
+                    </div>  
+                  </div>`
+                } else {
+                    msg = `
+                  <div class="col">
+                    <div class="tag z-depth-3">
+                      <span class="teal-text"><b>${data.user}</b>:  ${data.message}
+                      </span>
+                    </div>
+                  </div>`
+                }
+                msgbox.innerHTML = msg
+                messageBox.appendChild(msgbox)
+                messageBox.scrollTop = messageBox.scrollHeight
+            }
+        })
+    </script>
+</body>
+</html>

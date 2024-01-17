@@ -59,6 +59,9 @@
         </h5>
         <br>
         <br>
+        <a id="totestGroupingLink" href="#"><button id="btn_toAct_1">前往示範用分組頁面</button></a>
+        <br>
+        <br>
         <a id="toGroupingLink" href="#"><button id="btn_toAct_1">前往分組頁面</button></a>
         <br>
         <br>
@@ -67,8 +70,10 @@
     <script>
         // let urlHeader = location.protocol + '//' + document.domain + ':' + location.port;
         let urlHeader ="https://coinquiry.cosci.tw";
-        let toGroupingBtnTag = document.querySelector('#toGroupingLink')
+        let toGroupingBtnTag = document.querySelector('#toGroupingLink');
         toGroupingBtnTag.setAttribute('href', "https://coinquiry.cosci.tw/group/");
+        let totestGroupingBtnTag = document.querySelector('#toGroupingLink');
+        totestGroupingBtnTag.setAttribute('href', "https://coinquiry.cosci.tw/testgroup/");
     </script>
 </body>
 </html>

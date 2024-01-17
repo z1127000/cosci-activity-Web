@@ -266,23 +266,6 @@
             connectInfo.innerHTML = msg
             messageBox.appendChild(connectInfo)
         })
-        // 小組的訊息
-        socket.on('add new Member', function (data) {
-            let simuNum = data.simuNum;
-            let groupUser = data.username;
-            let group = data.group;
-            let position = data.position + 1;
-            let tabledata = document.getElementById(simuNum + "_group_" + group.toString() + "_" + position);
-            tabledata.innerHTML = groupUser;
-        })
-        // 移除組員的訊息
-        socket.on('delete group Member', function (data) {
-            let simuNum = data.simuNum;
-            let group = data.group;
-            let position = data.position + 1;
-            let tabledata = document.getElementById(simuNum + "_group_" + group.toString() + "_" + position);
-            tabledata.innerHTML = "";
-        })
         // 接受訊息
         socket.on('send msg', function (data) {
             if(data.room === room){
@@ -314,21 +297,6 @@
                 messageBox.scrollTop = messageBox.scrollHeight
             }
         })
-
-        function joinClicked(clickID) {
-            let simuNum = parseInt(clickID.split("_")[1]);
-            let group = parseInt(clickID.split("_")[2]);
-            socket.emit('group info', {
-                username: username,
-                simuNum: simuNum,
-                group: group
-            })
-            console.log({
-                username: username,
-                simuNum: simuNum,
-                group: group
-            });
-        }
     </script>
 </body>
 </html>
