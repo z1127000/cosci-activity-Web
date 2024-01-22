@@ -158,7 +158,7 @@ def testgroup():
             test_locked_groups = list(filter(None, locked_groups))
         if len(test_locked_groups) == 1:
             locked_groups_str = str(test_locked_groups[0])
-        elif len(locked_groups) >= 2:
+        elif len(test_locked_groups) >= 2:
             str_lock_groups = []
             for group in test_locked_groups:
                 str_lock_groups.append(str(group))     
@@ -242,7 +242,10 @@ def handle_message(data):
         msg_log["room"] = "全體聊天室"
         all_chat_collection.insert_one(msg_log)
     elif room_split[0] == "initial" and room_split[1] == "room":
-        msg_log["room"] = room_split[2]
+        if room_split[2] == "test":
+            msg_log["room"] = "test_" + room_split[2]
+        else:
+            msg_log["room"] = room_split[2]
         group_chat_collection.insert_one(msg_log)
     else:
         msg_log["room"] = ""
@@ -290,8 +293,6 @@ def handle_lock_group(data):
                 break
             else:
                 test_all_members.pop(name)
-
-        print(f"group {group} locked. member:{test_simu_group_info[group]}")
 
         socketio.emit('test lock group', data, to=room)
 
