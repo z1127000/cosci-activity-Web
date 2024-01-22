@@ -176,7 +176,7 @@ def testgroup():
 
 @app.route('/linkpage1')
 def linkpage1():
-    return render_template('linkpage1.html')
+    return render_template('linkPage1.html')
 
 @app.route('/groupPage')
 def groupPageNoPara():
