@@ -174,6 +174,9 @@ def testgroup():
         return render_template('index.html', now_users_str = now_users_str)
         # return redirect(url_for('index'))       
 
+@app.route('/linkpage1')
+def linkpage1():
+    return render_template('linkpage1.html')
 
 @app.route('/groupPage')
 def groupPageNoPara():
