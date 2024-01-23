@@ -33,11 +33,11 @@ group_chat_collection = mongo_db["metaWebGroupChat"]
 grouping_msg_collection = mongo_db["metaWebGroupingMsg"]
 locked_group_msg_collection = mongo_db["metaWebLockedGroupMsg"]
 
-# for record1 in all_chat_collection.find().limit(5).sort('_id', pymongo.DESCENDING):
-#     print(record1)
+for record1 in all_chat_collection.find().limit(5).sort('_id', pymongo.DESCENDING):
+    print(record1)
 
-# for record2 in group_chat_collection.find().limit(5).sort('_id', pymongo.DESCENDING):
-#     print(record2)
+for record2 in group_chat_collection.find().limit(5).sort('_id', pymongo.DESCENDING):
+    print(record2)
 
 # for record3 in grouping_msg_collection.find().limit(5).sort('_id', pymongo.DESCENDING):
 #     print(record3)
@@ -259,7 +259,7 @@ def handle_message(data):
         all_chat_collection.insert_one(msg_log)
     elif room_split[0] == "initial" and room_split[1] == "room":
         if room_split[2] == "test":
-            msg_log["room"] = "test_" + room_split[2]
+            msg_log["room"] = "test_" + room_split[3]
         else:
             msg_log["room"] = room_split[2]
         group_chat_collection.insert_one(msg_log)
