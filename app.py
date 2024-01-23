@@ -33,14 +33,14 @@ group_chat_collection = mongo_db["metaWebGroupChat"]
 grouping_msg_collection = mongo_db["metaWebGroupingMsg"]
 locked_group_msg_collection = mongo_db["metaWebLockedGroupMsg"]
 
-for record1 in all_chat_collection.find().limit(5).sort('_id', pymongo.DESCENDING):
-    print(record1)
+# for record1 in all_chat_collection.find().limit(5).sort('_id', pymongo.DESCENDING):
+#     print(record1)
 
-for record2 in group_chat_collection.find().limit(5).sort('_id', pymongo.DESCENDING):
-    print(record2)
+# for record2 in group_chat_collection.find().limit(5).sort('_id', pymongo.DESCENDING):
+#     print(record2)
 
-# for record3 in grouping_msg_collection.find().limit(5).sort('_id', pymongo.DESCENDING):
-#     print(record3)
+for record3 in grouping_msg_collection.find().limit(5).sort('_id', pymongo.DESCENDING):
+    print(record3)
 
 # for record4 in locked_group_msg_collection.find().limit(5).sort('_id', pymongo.DESCENDING):
 #     print(record4)
