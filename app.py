@@ -178,6 +178,10 @@ def testgroup():
 def linkpage1():
     return render_template('linkPage1.html')
 
+@app.route('/linkpage')
+def linkpage():
+    return render_template('linkPage.html')
+
 @app.route('/groupPage')
 def groupPageNoPara():
     return redirect(url_for('group'))
