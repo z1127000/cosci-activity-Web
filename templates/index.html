@@ -16,7 +16,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 <nav>
     <div class="nav-wrapper teal">
-        <a href="#" class="brand-logo center">海山高中電腦輔助科學探究體驗營</a>
+        <a href="#" class="brand-logo center">Computer-assisted scientific inquiry experience</a>
     </div>
 </nav>
 <div class="container">
@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <input value="" id="username" type="text" class="validate" name="username">
-                        <label class="active" for="username">名字</label>
+                        <label class="active" for="username">Name</label>
                     </div>
                 </div>
                 <div class="row">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <button id="submit" class="btn waves-effect waves-light teal z-depth-3 right" type="submit"
-                        name="action">進入活動
+                        name="action">enter activity page
                 </button>
             </form>
         </div>
@@ -64,7 +64,7 @@
 
     function nameValidate() {
         if(now_user.includes(inp.value)){
-            alert("使用者名稱重複，請打上全名或在後方加上英文名字。若加上英文名字請舉手讓助教登記。");
+            alert("The user name is repeated, please type the full name or add the English name at the end. If you add an English name, please raise your hand for the teaching assistant to register.");
             return false;
         }
     }
