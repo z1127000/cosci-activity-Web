@@ -345,7 +345,8 @@
         let leaveroom = document.querySelector('#leaveroom')
         let socket = io();
         // 連接
-        socket.connect(location.protocol + '//' + document.domain + ':' + location.port);
+        // socket.connect(location.protocol + '//' + document.domain + ':' + location.port);
+        socket.connect("http://127.0.0.1:3080");
         // 加入
         socket.emit('join', {
             username: username,

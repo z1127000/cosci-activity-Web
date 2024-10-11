@@ -207,7 +207,8 @@
         let wallfrictionLinkTag = document.querySelector('#wallfrictionLink')
         wallfrictionLinkTag.setAttribute('href', ["https://legacy.cosci.tw/gather?name=JNEEGO1697100022903&room=", wallfrictionRooms[groupname - 1],"&amount=1&maxuser=6&sync=false&lang=zh_TW"].join(''))
         // let urlHeader = location.protocol + '//' + document.domain + ':' + location.port;
-        let urlHeader ="https://coinquiry.cosci.tw";
+        let urlHeader = "http://127.0.0.1:3080";
+        // let urlHeader ="https://coinquiry.cosci.tw";
         let toGroupBtnTag = document.querySelector('#toGroupLink')
         toGroupBtnTag.setAttribute('href', [urlHeader, "/group/"].join(''))
         // let leaveroom = document.querySelector('#leaveroom')

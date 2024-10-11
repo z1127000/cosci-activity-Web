@@ -280,7 +280,8 @@
         let username = '{{ username }}'
         let locked_groups_str = '{{ locked_groups_str }}'
         // let urlHeader = location.protocol + '//' + document.domain + ':' + location.port;
-        let urlHeader ="https://coinquiry.cosci.tw";
+        let urlHeader = "http://127.0.0.1:3080";
+        // let urlHeader ="https://coinquiry.cosci.tw";
         let socket = io();
         // console.log(locked_groups_str.length);
         if(locked_groups_str.length == 1 ){
