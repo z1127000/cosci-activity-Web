@@ -414,7 +414,7 @@ def on_join(data):
         room_user[room].append(username)
 
     join_room(room)
-    socketio.emit('connect info', username + ' join chatroom', to=room)
+    socketio.emit('connect info', username + ' 加入房間 ', to=room)
 
 
 @socketio.on('leave')
